@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="d-flex mb-3">
+            <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_reclamation_index') }}"><i class="fa-solid fa-circle-left"></i></a>
+            <h1 style="color: blue; margin-left: 5rem"> Votre Reclamation</h1>
+        </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdReclamation</th>
+                <td>{{ reclamation.idreclamation }}</td>
+            </tr>
+            <tr>
+                <th>TypeReclamation</th>
+                <td>{{ reclamation.typereclamation }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ reclamation.description }}</td>
+            </tr>
+            <tr>
+                <th>Datereclamation</th>
+                <td>{{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Intitulereclamation</th>
+                <td>{{ reclamation.intitulereclamation }}</td>
+            </tr>
+            <tr>
+                <th>Etatreclamation</th>
+                <td>{{ reclamation.etatreclamation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <a class="btn btn-success" href="{{ path('app_reclamation_edit', {'idreclamation': reclamation.idreclamation}) }}">edit</a>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+</div>
+{% endblock %}

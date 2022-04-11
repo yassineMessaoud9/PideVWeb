@@ -1,0 +1,62 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+
+{% block body %}
+    <h1 style="color:blue; text-align:center;font-size:300%; margin-bottom: 3rem">Evenement index</h1>
+
+    <table class="table">
+        <thead class="bg-success">
+            <tr>
+                <th>Ideve</th>
+                <th>Intituleeve</th>
+                <th>Payseve</th>
+                <th>Prixeve</th>
+                <th>Datedebuteve</th>
+                <th>Datefineve</th>
+                <th>Addresseve</th>
+                <th>TypeEve</th>
+                <th>PhotoEve</th>
+                <th>NbplaceEve</th>
+                <th>DescriptionEve</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.ideve }}</td>
+                <td>{{ evenement.intituleeve }}</td>
+                <td>{{ evenement.payseve }}</td>
+                <td>{{ evenement.prixeve }}</td>
+                <td>{{ evenement.datedebuteve ? evenement.datedebuteve|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.datefineve ? evenement.datefineve|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.addresseve }}</td>
+                <td>{{ evenement.typeeve }}</td>
+                <td><img src="{{asset('/uploads/' ~ evenement.photoeve)}}" alt=""style="width: 80px;height:80px"></td>
+                <td>{{ evenement.nbplaceeve }}</td>
+                <td>{{ evenement.descriptioneve }}</td>
+                <td>
+                    <a class="btn btn-success " href="{{ path('app_evenement_show', {'ideve': evenement.ideve}) }}">show</a>
+                    <a class="btn btn-danger"  style="height: 38px;width: 62.78px" margin=""href="{{ path('app_evenement_edit', {'ideve': evenement.ideve}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_evenement_new') }}">Create new Event</a>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

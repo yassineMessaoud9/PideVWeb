@@ -1,0 +1,18 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Edit Evenement{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {attr:{novalidate:'novalidate'} }) }}
+    <div class="d-flex mb-3">
+        <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_evenement_indexback') }}"><i class="fa-solid fa-circle-left"></i></a>
+
+    </div>
+    <h1 style="margin-left: 35%; color: blue">Edit Evenement</h1>
+
+    {{ include('evenement/_form.html.twig', {'button_label': 'Update'}) }}
+
+   {# <a class="btn btn-success" href="{{ path('app_evenement_index') }}">back to list</a>#}
+
+    {{ include('evenement/_delete_form.html.twig') }}
+{% endblock %}

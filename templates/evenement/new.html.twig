@@ -1,0 +1,27 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Evenement{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {attr:{novalidate:'novalidate'} }) }}
+
+    <div class="d-flex mb-3">
+        <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_evenement_indexback') }}"><i class="fa-solid fa-circle-left"></i></a>
+        <h1 style="margin-left: 35%; color: blue">Create new Evenement</h1>
+    </div>
+
+
+    {#  {{ form_errors(form.intituleeve, {'attr':{'class':'text-danger' }}) }}
+
+
+    {{ form_errors(form.payseve, {'attr':{'class':'text-danger' }}) }}
+
+
+
+    {{ form_errors(form.prixeve, {'attr':{'class':'text-danger' }}) }} #}
+
+
+
+    {{ include('evenement/_form.html.twig') }}
+
+{% endblock %}

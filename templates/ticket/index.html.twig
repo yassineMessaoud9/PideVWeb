@@ -1,0 +1,50 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Table Ticket{% endblock %}
+
+{% block body %}
+    <h1  style="color:blue; text-align:center;font-size:300%; margin-bottom: 3rem">Table Ticket</h1>
+
+
+
+    <table class="table">
+        <thead class="bg-success">
+            <tr>
+                <th>Idticket</th>
+                <th>Prixticket</th>
+                <th>Dateticket</th>
+                <th>Event nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.idticket }}</td>
+                <td>{{ ticket.prixticket }}</td>
+                <td>{{ ticket.dateticket ? ticket.dateticket|date('Y-m-d') : '' }}</td>
+                <td>{{ ticket.ideve }}</td>
+                <td>
+                    <a class="btn btn-success " href="{{ path('app_ticket_show', {'idticket': ticket.idticket}) }}">show</a>
+                    <a class="btn btn-danger" href="{{ path('app_ticket_edit', {'idticket': ticket.idticket}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success " href="{{ path('app_ticket_new') }}">Create new</a>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

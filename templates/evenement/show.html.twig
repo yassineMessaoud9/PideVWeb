@@ -1,0 +1,62 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+
+{% block body %}
+    <h1 style="color: blue">Evenement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Ideve</th>
+                <td>{{ evenement.ideve }}</td>
+            </tr>
+            <tr>
+                <th>Intituleeve</th>
+                <td>{{ evenement.intituleeve }}</td>
+            </tr>
+            <tr>
+                <th>Payseve</th>
+                <td>{{ evenement.payseve }}</td>
+            </tr>
+            <tr>
+                <th>Prixeve</th>
+                <td>{{ evenement.prixeve }}</td>
+            </tr>
+            <tr>
+                <th>Datedebuteve</th>
+                <td>{{ evenement.datedebuteve ? evenement.datedebuteve|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datefineve</th>
+                <td>{{ evenement.datefineve ? evenement.datefineve|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Addresseve</th>
+                <td>{{ evenement.addresseve }}</td>
+            </tr>
+            <tr>
+                <th>Typeeve</th>
+                <td>{{ evenement.typeeve }}</td>
+            </tr>
+            <tr>
+                <th>Photoeve</th>
+                <td>{{ evenement.photoeve }}</td>
+            </tr>
+            <tr>
+                <th>Nbplaceeve</th>
+                <td>{{ evenement.nbplaceeve }}</td>
+            </tr>
+            <tr>
+                <th>Descriptioneve</th>
+                <td>{{ evenement.descriptioneve }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_evenement_indexback') }}">back to list</a>
+
+    <a class="btn btn-success" href="{{ path('app_evenement_edit', {'ideve': evenement.ideve}) }}">edit</a>
+
+    {{ include('evenement/_delete_form.html.twig') }}
+{% endblock %}

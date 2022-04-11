@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reclamation{% endblock %}
+
+{% block body %}
+    <div class="container">
+    {{ form_start(form, {attr:{novalidate:'novalidate'} }) }}
+        <div class="d-flex mb-3">
+            <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_reclamation_index') }}"><i class="fa-solid fa-circle-left"></i></a>
+            <h1 style="margin-left: 35%; color: blue">Passer Reclamation</h1>
+        </div>
+
+
+    {{ include('reclamation/_form.html.twig') }}
+
+    {# <a href="{{ path('app_reclamation_index') }}">back to list</a> #}
+    </div>
+{% endblock %}

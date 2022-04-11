@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+			<link href="{{ asset('frontoffice/css/styles.css')}}" rel="stylesheet">
+
+			<link href="{{ asset('frontoffice/css/style.css')}}" rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" href="{{ asset('frontoffice/css/jquery.bxslider.css')}}" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+			<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!---webfonts---->
+			<!--start slider -->
+	    <link rel="stylesheet" href="{{ asset('frontoffice/css/fwslider.css')}}" media="all">
+		<link rel="stylesheet" href="{{ asset('frontoffice/css/jquery-ui.css')}}" />
+			  <link rel="stylesheet" href="{{ asset('frontoffice/css/flexslider.css')}}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('frontoffice/css/jquery.bxslider.css')}}" type="text/css" />
+
+
+        {% endblock %}
+
+        {% block javascripts %}
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<script src="{{ asset('frontoffice/js/jquery.min.js')}}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<!---script---->
+		<script defer src="{{ asset('frontoffice/js/script2.js')}}"></script>
+		<script src="{{ asset('frontoffice/js/jquery.bxslider.js')}}"></script>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('.bxslider').bxSlider({
+						 auto: true,
+ 						 autoControls: true,
+						 minSlides: 4,
+						 maxSlides: 4,
+						 slideWidth:450,
+						 slideMargin: 10
+					});
+				});
+			</script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+			<script>
+				$(document).ready(function() {
+					// you may need to change this code if you are not using Bootstrap Datepicker
+					$('.js-datepicker').datepicker({
+						format: 'yyyy-mm-dd'
+					});
+				});
+			</script>
+		<!---//script---->
+		<!---smoth-scrlling---->
+			<script type="text/javascript">
+				$(document).ready(function(){
+									$('a[href^="#"]').on('click',function (e) {
+									    e.preventDefault();
+									    var target = this.hash,
+									    $target = $(target);
+									    $('html, body').stop().animate({
+									        'scrollTop': $target.offset().top
+									    }, 1000, 'swing', function () {
+									        window.location.hash = target;
+									    });
+									});
+								});
+				</script>
+		<!---//smoth-scrlling---->
+		<!----start-top-nav-script---->
+		<script type="text/javascript" src="{{ asset('frontoffice/js/flexy-menu.js')}}"></script>
+		<script type="text/javascript">$(document).ready(function(){$(".flexy-menu").flexymenu({speed: 400,type: "horizontal",align: "right"});});</script>
+		<script src="{{ asset('frontoffice/js/jquery-ui.min.js')}}"></script>
+		<script src="{{ asset('frontoffice/js/css3-mediaqueries.js')}}"></script>
+		<script src="{{ asset('frontoffice/js/css3-mediaqueries.js')}}"></script>
+        {% endblock %}
+    </head>
+    <body>
+		<div class="top-header" id="header">
+				<div class="wrap">
+				<div class="top-header-left">
+					<ul>
+						<li><a href="#"><span> </span> Agent Login</a></li>
+						<li><a href="#"><span> </span> Agent Login</a></li>
+						<li><p><span> </span>Not a Member ? </p>&nbsp;<a class="reg" href="#"> Register</a></li>
+						<li><p class="contact-info">Call Us Now :815-123-4567</p></li>
+						<div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="top-header-right">
+					<ul>
+						<li><a class="face" href="#"><span> </span></a></li>
+						<li><a class="twit" href="#"><span> </span></a></li>
+						<li><a class="thum" href="#"><span> </span></a></li>
+						<li><a class="pin" href="#"><span> </span></a></li>
+						<div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="clear"> </div>
+			</div>
+			</div>
+			<!---start-header---->
+			<div class="header">
+				<div class="wrap">
+				<!--- start-logo---->
+				<div class="logo">
+					<a href="index.html"><img src="{{ asset('frontoffice/images/logo.png')}}" title="voyage" /></a>
+				</div>
+				<!--- //End-logo---->
+				<!--- start-top-nav---->
+				<div class="top-nav">
+						<ul class="flexy-menu thick orange">
+							<li class="active"><a href="index.html">Home</a></li>
+							<li><a href="">Destinations</a>
+								<ul>
+								<li><a href="destinations.html">Dropdown item</a></li>
+								<li><a href="destinations.html">Dropdown item</a></li>
+								<li><a href="destinations.html">Dropdown item</a>
+									<ul>
+										<li><a href="destinations.html">Dropdown item</a></li>
+										<li><a href="destinations.html">Dropdown item</a>
+											<ul>
+												<li><a href="destinations.html">Dropdown item</a></li>
+												<li><a href="destinations.html">Dropdown item</a></li>
+												<li><a href="destinations.html">Dropdown item</a></li>
+												<li><a href="destinations.html">Dropdown item</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Dropdown item</a></li>
+										<li><a href="#">Dropdown item</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Dropdown item</a></li>
+								<li><a href="#">Dropdown item</a></li>
+							</ul>
+							</li>
+							<li><a href="criuses.html">Criuses</a></li>
+							<li><a href="destinations.html">Specials</a></li>
+							<li><a href="destinations.html">Holidays</a></li>
+							<li><a href="blog.html">Blog</a></li>
+						</ul>
+						<div class="search-box">
+							<div id="sb-search" class="sb-search">
+								<form>
+									<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+									<input class="sb-search-submit" type="submit" value="">
+									<span class="sb-icon-search"> </span>
+								</form>
+							</div>
+						</div>
+						<!----search-scripts---->
+						<script src="frontoffice/js/modernizr.custom.js"></script>
+						<script src="frontoffice/js/classie.js"></script>
+						<script src="frontoffice/js/uisearch.js"></script>
+						<script>
+							new UISearch( document.getElementById( 'sb-search' ) );
+						</script>
+						<!----//search-scripts---->
+				</div>
+				<!--- //End-top-nav---->
+				<div class="clear"> </div>
+			</div>
+			<!---//End-header---->
+		</div>
+        {% block body %}
+
+		{% endblock %}
+	<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		</head>
+		<body>
+
+		<div class="container">
+			<h2>Modal Example</h2>
+		 Trigger the modal with a button
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+
+
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Modal Header</h4>
+						</div>
+						<div class="modal-body">
+							<p>Some text in the modal.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>-->
+		<div class="footer">
+			<div class="wrap">
+			<div class="footer-grids">
+				<div class="footer-grid Newsletter">
+					<h3>News letter </h3>
+					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
+					<form>
+						<input type="text" placeholder="Subscribes.." /> <input type="submit" value="GO" />
+					</form>
+				</div>
+				<div class="footer-grid Newsletter">
+					<h3>Latest News </h3>
+					<div class="news">
+						<div class="news-pic">
+							<img src="{{ asset('frontoffice/images//f01.jpg')}}" title="news-pic1" />
+						</div>
+						<div class="news-info">
+							<a href="#">Postformat Gallery: Multiple images</a>
+							<span>December 12, 2012 - 9:11 pm</span>
+						</div>
+						<div class="clear"> </div>
+					</div>
+					<div class="news">
+						<div class="news-pic">
+							<img src="{{ asset('frontoffice/images//f01.jpg')}}" title="news-pic1" />
+						</div>
+						<div class="news-info">
+							<a href="#">Postformat Gallery: Multiple images</a>
+							<span>December 12, 2012 - 9:11 pm</span>
+						</div>
+						<div class="clear"> </div>
+					</div>
+				</div>
+				<div class="footer-grid tags">
+					<h3>Tags</h3>
+					<ul>
+						<li><a href="#">Agent login</a></li>
+						<li><a href="#">Customer Login</a></li>
+						<li><a href="#">Not a Member?</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">New Horizons</a></li>
+						<li><a href="#">Lanscape</a></li>
+						<li><a href="#">Tags</a></li>
+						<li><a href="#">Nice</a></li>
+						<li><a href="#">Some</a></li>
+						<li><a href="#">Portrait</a></li>
+						<div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="footer-grid address">
+					<h3>Address </h3>
+					<div class="address-info">
+						<span>DieSachbearbeiter Schonhauser </span>
+						<span>Allee 167c,10435 Berlin Germany</span>
+						<span><i>E-mail:</i><a href="mailto:moin@blindtextgenerator.de">moin@blindtextgenerator.de</a></span>
+					</div>
+					<div class="footer-social-icons">
+						<ul>
+							<li><a class="face1 simptip-position-bottom simptip-movable" data-tooltip="facebook" href="#"><span> </span></a></li>
+							<li><a class="twit1 simptip-position-bottom simptip-movable" data-tooltip="twitter" href="#"><span> </span></a></li>
+							<li><a class="tub1 simptip-position-bottom simptip-movable" data-tooltip="tumblr" href="#"><span> </span></a></li>
+							<li><a class="pin1 simptip-position-bottom simptip-movable" data-tooltip="pinterest" href="#"><span> </span></a></li>
+							<div class="clear"> </div>
+						</ul>
+					</div>
+				</div>
+				<div class="clear"> </div>
+			</div>
+			</div>
+		</div>
+		<!----//End-footer---->
+		<!---start-subfooter---->
+
+		<div class="subfooter">
+			<div class="wrap">
+				<ul>
+					<li><a href="index.html">Home</a><span>::</span></li>
+					<li><a href="destinations.html">Destinations</a><span>::</span></li>
+					<li><a href="criuses.html">Criuses</a><span>::</span></li>
+					<li><a href="destinations.html">Specils</a><span>::</span></li>
+					<li><a href="destinations.html">Holidays</a><span>::</span></li>
+					<li><a href="blog.html">Blog</a><span>::</span></li>
+					<li><a href="contact.html">Contact Us</a></li>
+					<div class="clear"> </div>
+				</ul>
+				<p class="copy-right">Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+				<a class="to-top" href="#header"><span> </span> </a>
+			</div>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}New Avis{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Feel Free to rate us :D</h1>
+
+    {{ include('avis/_form.html.twig') }}
+
+    {#  <a href="{{ path('app_avis_index') }}">back to list</a>#}
+    </div>
+{% endblock %}

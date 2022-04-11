@@ -1,0 +1,30 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Ticket{% endblock %}
+
+{% block body %}
+    <h1 style="color: blue">Ticket</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idticket</th>
+                <td>{{ ticket.idticket }}</td>
+            </tr>
+            <tr>
+                <th>Prixticket</th>
+                <td>{{ ticket.prixticket }}</td>
+            </tr>
+            <tr>
+                <th>Dateticket</th>
+                <td>{{ ticket.dateticket ? ticket.dateticket|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_ticket_index') }}">back to list</a>
+
+    <a class="btn btn-success" href="{{ path('app_ticket_edit', {'idticket': ticket.idticket}) }}">edit</a>
+
+    {{ include('ticket/_delete_form.html.twig') }}
+{% endblock %}

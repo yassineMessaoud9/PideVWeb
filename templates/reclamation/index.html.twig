@@ -1,0 +1,51 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+    <h1 style="color: blue";text-align:center; margin-bottom: 3rem  >Reclamation index</h1>
+
+    <table class="table">
+        <thead class="bg-success">
+            <tr>
+                <th>IdReclamation</th>
+                <th>TypeReclamation</th>
+                <th>Description</th>
+                <th>Datereclamation</th>
+                <th>Intitulereclamation</th>
+                <th>Etatreclamation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.idreclamation }}</td>
+                <td>{{ reclamation.typereclamation }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.intitulereclamation }}</td>
+                <td>{{ reclamation.etatreclamation }}</td>
+                <td>
+                    {#  <a class="btn btn-success" href="{{ path('app_reclamation_show', {'idreclamation': reclamation.idreclamation}) }}">show</a>#}
+                    <a class="btn btn-danger" href="{{ path('app_reclamation_editAdmin', {'idreclamation': reclamation.idreclamation}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#  <a href="{{ path('app_reclamation_new') }}">Create new</a>#}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

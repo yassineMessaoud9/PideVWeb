@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1 style="color:blue; text-align:center;font-size:300%; margin-bottom: 3rem">Event's List </h1>
+
+    <table class="table">
+        <thead class="bg-success">
+        <tr>
+
+            <th>PhotoEve</th>
+            <th>Payseve</th>
+            <th>DescriptionEve</th>
+            <th>Datedebuteve</th>
+            <th style="width: 100px">Datefineve</th>
+            <th>Participer</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+
+                <td><img src="{{asset('/uploads/' ~ evenement.photoeve)}}" alt=""style="width: 200px;height:200px"></td>
+                <td style="font-size: 100%">{{ evenement.payseve }}</td>
+                <td style="font-size: 100%">{{ evenement.descriptioneve }}</td>
+                <td style="font-size: 100% ">{{ evenement.datedebuteve ? evenement.datedebuteve|date('Y-m-d') : '' }}</td>
+                <td style="font-size: 100%">{{ evenement.datefineve ? evenement.datefineve|date('Y-m-d') : '' }}</td>
+
+                <td>
+                    <a class="btn btn-success "  href="" onclick="myfunction()">Participer</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        {# {% for evenement in evenements %}
+        <div>
+        <img src="{{asset('/uploads/' ~ evenement.photoeve)}}" alt=""style="width: 80px;height:80px">
+        </div>
+        {% endfor %} #}
+        </tbody>
+    </table>
+
+
+    </div>
+{% endblock %}
+{%  block javascripts %}
+    <script>
+        function myfunction() {
+            alert("thanks for participating");
+        }
+    </script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

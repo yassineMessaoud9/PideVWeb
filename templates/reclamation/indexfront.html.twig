@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 style="color: red";text-align:center; margin-bottom:30rem >Reclamation index</h1>
+    <table class="table">
+        <thead class="bg-success">
+            <tr>
+                <th>IdReclamation</th>
+                <th>TypeReclamation</th>
+                <th>Description</th>
+                <th>DateReclamation</th>
+                <th>TitreReclamation</th>
+                <th>EtatReclamation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.idreclamation }}</td>
+                <td>{{ reclamation.typereclamation }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.intitulereclamation }}</td>
+                <td>{{ reclamation.etatreclamation }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_reclamation_show', {'idreclamation': reclamation.idreclamation}) }}">show</a>
+                    <a class="btn btn-danger" href="{{ path('app_reclamation_edit', {'idreclamation': reclamation.idreclamation}) }}">edit</a>
+                    {#  <a class="btn btn-danger" href="{{ path('app_reclamation_delete', {'idreclamation': reclamation.idreclamation}) }}">Delete</a>#}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-primary h2" href="{{ path('app_reclamation_new') }}">Create new</a>
+    </div>
+</div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}
