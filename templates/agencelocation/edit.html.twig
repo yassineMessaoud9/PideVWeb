@@ -1,0 +1,13 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Edit Agencelocation{% endblock %}
+
+{% block body %}
+    <h1>Edit Agencelocation</h1>
+
+    {{ include('agencelocation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_agencelocation_index') }}">back to list</a>
+
+    {{ include('agencelocation/_delete_form.html.twig') }}
+{% endblock %}

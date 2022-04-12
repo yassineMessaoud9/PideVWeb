@@ -1,0 +1,11 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Saison{% endblock %}
+
+{% block body %}
+    <h1>Create new Saison</h1>
+
+    {{ include('saison/_form.html.twig') }}
+
+    <a href="{{ path('app_saison_index') }}">back to list</a>
+{% endblock %}

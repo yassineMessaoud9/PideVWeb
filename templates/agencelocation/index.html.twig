@@ -1,0 +1,49 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Agencelocation index{% endblock %}
+
+{% block body %}
+    <h1>Agencelocation index</h1>
+
+    <table class="table">
+        <thead class="bg-success">
+            <tr>
+                <th>Idagence</th>
+                <th>Nomagence</th>
+                <th>Contactagence</th>
+                <th>Addressagence</th>
+                <th>Logoagence</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for agencelocation in agencelocations %}
+            <tr>
+                <td>{{ agencelocation.idagence }}</td>
+                <td>{{ agencelocation.nomagence }}</td>
+                <td>{{ agencelocation.contactagence }}</td>
+                <td>{{ agencelocation.addressagence }}</td>
+                <td>{{ agencelocation.logoagence }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_agencelocation_show', {'idagence': agencelocation.idagence}) }}">show</a>
+                    <a class="btn btn-danger" href="{{ path('app_agencelocation_edit', {'idagence': agencelocation.idagence}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_agencelocation_new') }}">Create new</a>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

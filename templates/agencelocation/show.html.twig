@@ -1,0 +1,38 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Agencelocation{% endblock %}
+
+{% block body %}
+    <h1>Agencelocation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idagence</th>
+                <td>{{ agencelocation.idagence }}</td>
+            </tr>
+            <tr>
+                <th>Nomagence</th>
+                <td>{{ agencelocation.nomagence }}</td>
+            </tr>
+            <tr>
+                <th>Contactagence</th>
+                <td>{{ agencelocation.contactagence }}</td>
+            </tr>
+            <tr>
+                <th>Addressagence</th>
+                <td>{{ agencelocation.addressagence }}</td>
+            </tr>
+            <tr>
+                <th>Logoagence</th>
+                <td>{{ agencelocation.logoagence }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_agencelocation_index') }}">back to list</a>
+
+    <a href="{{ path('app_agencelocation_edit', {'idagence': agencelocation.idagence}) }}">edit</a>
+
+    {{ include('agencelocation/_delete_form.html.twig') }}
+{% endblock %}

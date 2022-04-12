@@ -1,0 +1,11 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Agencelocation{% endblock %}
+
+{% block body %}
+    <h1>Create new Agencelocation</h1>
+
+    {{ include('agencelocation/_form.html.twig') }}
+
+    <a href="{{ path('app_agencelocation_index') }}">back to list</a>
+{% endblock %}

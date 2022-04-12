@@ -1,0 +1,38 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Locationvoiture{% endblock %}
+
+{% block body %}
+    <h1>Locationvoiture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idlocation</th>
+                <td>{{ locationvoiture.idlocation }}</td>
+            </tr>
+            <tr>
+                <th>Datedebutlocation</th>
+                <td>{{ locationvoiture.datedebutlocation ? locationvoiture.datedebutlocation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datefinlocation</th>
+                <td>{{ locationvoiture.datefinlocation ? locationvoiture.datefinlocation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datelocation</th>
+                <td>{{ locationvoiture.datelocation ? locationvoiture.datelocation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ locationvoiture.montant }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_locationvoiture_index') }}">back to list</a>
+
+    <a href="{{ path('app_locationvoiture_edit', {'idlocation': locationvoiture.idlocation}) }}">edit</a>
+
+    {{ include('locationvoiture/_delete_form.html.twig') }}
+{% endblock %}

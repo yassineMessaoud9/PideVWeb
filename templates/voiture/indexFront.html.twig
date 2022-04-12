@@ -1,0 +1,59 @@
+
+{% block stylesheets %}
+  <link href="{{asset('frontoffice/location/css/location.css')}}" rel="stylesheet" /> 
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+{% endblock %}
+
+     {% block javascripts %} 
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {# <script src=" {{asset('backoffice/dashboard/js/location.js')}}"></script> #}
+{% endblock %} 
+
+{% block body %}
+
+
+
+
+
+<div class="container">
+    <br>
+    <h4>Liste des voitures à louer</h2>
+	<br>
+	<div class="row  center shadow rounded"" id="ads">
+    <!-- Category Card -->
+     {% for voiture in voitures %}
+    
+  
+   <div class="col-md-4" style="margin-top:1% ; margin-bottom:2%">
+        <div class="card rounded">
+            <div class="card-image">
+                
+               
+                 <img class="img-fluid"   src="{{asset(voiture.photovoiture)}}" alt="photo voiture" />
+            </div>
+            <div class="card-image-overlay m-auto">
+                <span class="card-detail-badge"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+</svg> {{ voiture.nbplace }} places</span>
+                <span class="card-detail-badge"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plug" viewBox="0 0 16 16">
+  <path d="M6 0a.5.5 0 0 1 .5.5V3h3V.5a.5.5 0 0 1 1 0V3h1a.5.5 0 0 1 .5.5v3A3.5 3.5 0 0 1 8.5 10c-.002.434-.01.845-.04 1.22-.041.514-.126 1.003-.317 1.424a2.083 2.083 0 0 1-.97 1.028C6.725 13.9 6.169 14 5.5 14c-.998 0-1.61.33-1.974.718A1.922 1.922 0 0 0 3 16H2c0-.616.232-1.367.797-1.968C3.374 13.42 4.261 13 5.5 13c.581 0 .962-.088 1.218-.219.241-.123.4-.3.514-.55.121-.266.193-.621.23-1.09.027-.34.035-.718.037-1.141A3.5 3.5 0 0 1 4 6.5v-3a.5.5 0 0 1 .5-.5h1V.5A.5.5 0 0 1 6 0zM5 4v2.5A2.5 2.5 0 0 0 7.5 9h1A2.5 2.5 0 0 0 11 6.5V4H5z"/>
+</svg> {{ voiture.nbrchevaux }} chevaux</span>
+                <span class="card-detail-badge"> {{ voiture.tarif }} DT</span>
+            </div>
+            <div class="card-body text-center">
+                <div class="ad-title m-auto">
+                    <h5>{{ voiture.marquevoiture }}</h5>
+                </div>
+                <a class="ad-btn" href="{{ path('app_locationvoiture_new') }}">Rent</a>
+            </div>
+        </div>
+    </div>
+  
+   {% endfor %}
+  
+</div>
+</div>
+{% endblock %}

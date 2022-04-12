@@ -1,0 +1,11 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Locationvoiture{% endblock %}
+
+{% block body %}
+    <h1>Create new Locationvoiture</h1>
+
+    {{ include('locationvoiture/_form.html.twig') }}
+
+    <a href="{{ path('app_locationvoiture_index') }}">back to list</a>
+{% endblock %}

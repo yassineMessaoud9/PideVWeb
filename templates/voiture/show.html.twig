@@ -1,0 +1,70 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+  
+
+		
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0"> Voiture  </h3>
+			   
+              
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    
+                    <th scope="col">Matricule</th>
+                    <th scope="col">Marquevoiture</th>
+                    <th scope="col">Photovoiture</th>
+                    
+                    <th scope="col">Tarif</th>
+                  </tr>
+                </thead>
+                <tbody>
+				  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                       
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{ voiture.matricule }}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                    {{ voiture.marquevoiture }}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                       {{ voiture.photovoiture }}
+                      </span>
+                    </td>
+                    <td>
+              {{ voiture.tarif }}
+                    </td>
+                 
+                
+                  </tr>
+                   
+                  
+                 
+
+                 
+                   
+                  
+                </tbody>
+              </table>
+            </div>
+         
+</div>
+
+    {{ include('voiture/_delete_form.html.twig') }}
+ <a href="{{ path('app_voiture_index') }}" class="btn btn-outline-primary btn-lg btn-block " style="margin-top:1% " role="button" aria-pressed="true">back to list</a>
+
+
+
+{% endblock %}
+
