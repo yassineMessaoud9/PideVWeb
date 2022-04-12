@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+       {% block title %}Hotel {% endblock %}
+
+{% block body %}
+    <h1>Hotel </h1>
+<div class="container">  
+
+    <table class="table">
+        <thead class="bg-success"
+>
+           
+        </thead>
+        <tbody>
+        {% for hotel in hotels %}
+            <tr>
+            
+                <td><img src="{{asset('/asma/' ~ hotel.photo)}}" alt=""style="width: 200px;height:200px"></td>
+                  <td><h2> {{ hotel.nomhotel }} </td> </h2>
+                <td>
+       
+                    <a class="btn btn-danger"
+
+ href="{{ path('app_reservationhotels2_new', {'idhotel': hotel.idhotel}) }}">reserver</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

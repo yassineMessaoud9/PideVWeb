@@ -1,0 +1,39 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Reservationrestaurant index{% endblock %}
+
+{% block body %}
+    <h1>Reservationrestaurant index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idreservationrestau</th>
+                <th>Datereservationrestau</th>
+                <th>Datedebutres</th>
+                <th>Datefinres</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservationrestaurant in reservationrestaurants %}
+            <tr>
+                <td>{{ reservationrestaurant.idreservationrestau }}</td>
+                <td>{{ reservationrestaurant.datereservationrestau ? reservationrestaurant.datereservationrestau|date('Y-m-d') : '' }}</td>
+                <td>{{ reservationrestaurant.datedebutres ? reservationrestaurant.datedebutres|date('Y-m-d') : '' }}</td>
+                <td>{{ reservationrestaurant.datefinres ? reservationrestaurant.datefinres|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_reservationrestaurant_show', {'idreservationrestau': reservationrestaurant.idreservationrestau}) }}">show</a>
+                    <a href="{{ path('app_reservationrestaurant_edit', {'idreservationrestau': reservationrestaurant.idreservationrestau}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reservationrestaurant_new') }}">Create new</a>
+{% endblock %}

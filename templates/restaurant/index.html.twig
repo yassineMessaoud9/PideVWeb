@@ -1,0 +1,55 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Restaurant index{% endblock %}
+
+{% block body %}
+    <h1>Restaurant index</h1>
+
+    <table class="table">
+        <thead class="bg-success">
+            <tr>
+                <th>Idrestau</th>
+                <th>Nomrestau</th>
+                <th>Typerestau</th>
+                <th>Nbrtable</th>
+                <th>Localisation</th>
+                <th>Telephone</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.idrestau }}</td>
+                <td>{{ restaurant.nomrestau }}</td>
+                <td>{{ restaurant.typerestau }}</td>
+                <td>{{ restaurant.nbrtable }}</td>
+                <td>{{ restaurant.localisation }}</td>
+                <td>{{ restaurant.telephone }}</td>
+          <td><img src="{{asset('/asma/' ~ restaurant.photo)}}" alt=""style="width: 80px;height:80px"></td>
+
+                <td>
+                    <a class="btn btn-success " href="{{ path('app_restaurant_show', {'idrestau': restaurant.idrestau}) }}">show</a>
+                    <a  class="btn btn-danger"
+href="{{ path('app_restaurant_edit', {'idrestau': restaurant.idrestau}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a  class="btn btn-success "href="{{ path('app_restaurant_new') }}">Create new</a>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Reservationrestaurant{% endblock %}
+
+{% block body %}
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+    <h1>Create new Reservationrestaurant</h1>
+
+    {{ include('reservationrestaurant/_form.html.twig') }}
+    {{ form_widget(form.datedebutres,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.datedebutres,{'attr':{'class':'text-danger'}}) }}
+      {{ form_widget(form.datefinres,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form.datefinres,{'attr':{'class':'text-danger'}}) }}
+         {{ form_end(form) }}
+
+
+    <a href="{{ path('app_reservationrestaurant_index') }}">back to list</a>
+{% endblock %}

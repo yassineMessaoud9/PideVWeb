@@ -1,0 +1,55 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Hotel index{% endblock %}
+
+{% block body %}
+    <h1>Hotel index</h1>
+
+    <table class="table">
+        <thead class="bg-success"
+>
+            <tr>
+                <th>Idhotel</th>
+                <th>Nomhotel</th>
+                <th>Adresse</th>
+                <th>Etoile</th>
+                <th>Nbrchambre</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hotel in hotels %}
+            <tr>
+                <td>{{ hotel.idhotel }}</td>
+                <td>{{ hotel.nomhotel }}</td>
+                <td>{{ hotel.adresse }}</td>
+                <td>{{ hotel.etoile }}</td>
+                <td>{{ hotel.nbrchambre }}</td>
+                <td><img src="{{asset('/asma/' ~ hotel.photo)}}" alt=""style="width: 150px;height:180px"></td>
+                <td>
+                    <a class="btn btn-success "
+href="{{ path('app_hotel_show', {'idhotel': hotel.idhotel}) }}">show</a>
+                    <a class="btn btn-danger"
+
+ href="{{ path('app_hotel_edit', {'idhotel': hotel.idhotel}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a   class="btn btn-success "href="{{ path('app_hotel_new') }}">Create new</a>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}

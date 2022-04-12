@@ -1,0 +1,13 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Edit Reservationrestaurant{% endblock %}
+
+{% block body %}
+    <h1>Edit Reservationrestaurant</h1>
+
+    {{ include('reservationrestaurant/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_reservationrestaurant_index') }}">back to list</a>
+
+    {{ include('reservationrestaurant/_delete_form.html.twig') }}
+{% endblock %}

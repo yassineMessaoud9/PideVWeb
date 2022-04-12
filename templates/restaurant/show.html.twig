@@ -1,0 +1,45 @@
+{% extends 'baseadmin.html.twig' %}
+{% block title %}Restaurant{% endblock %}
+
+{% block body %}
+    <h1>Restaurant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idrestau</th>
+                <td>{{ restaurant.idrestau }}</td>
+            </tr>
+            <tr>
+                <th>Nomrestau</th>
+                <td>{{ restaurant.nomrestau }}</td>
+            </tr>
+            <tr>
+                <th>Typerestau</th>
+                <td>{{ restaurant.typerestau }}</td>
+            </tr>
+            <tr>
+                <th>Nbrtable</th>
+                <td>{{ restaurant.nbrtable }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ restaurant.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ restaurant.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ restaurant.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_restaurant_index') }}">back to list</a>
+
+    <a href="{{ path('app_restaurant_edit', {'idrestau': restaurant.idrestau}) }}">edit</a>
+
+    {{ include('restaurant/_delete_form.html.twig') }}
+{% endblock %}

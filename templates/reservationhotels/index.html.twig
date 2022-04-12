@@ -1,0 +1,47 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Reservationhotels index{% endblock %}
+
+{% block body %}
+    <h1>Reservationhotels index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idreservationhotel</th>
+                <th>Typechambre</th>
+                <th>Nbrnuit</th>
+                <th>Datereservation</th>
+                <th>Nbrpersonne</th>
+                <th>Dateallerreser</th>
+                <th>Dateretourreser</th>
+                <th>Idu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservationhotel in reservationhotels %}
+            <tr>
+                <td>{{ reservationhotel.idreservationhotel }}</td>
+                <td>{{ reservationhotel.typechambre }}</td>
+                <td>{{ reservationhotel.nbrnuit }}</td>
+                <td>{{ reservationhotel.datereservation ? reservationhotel.datereservation|date('Y-m-d') : '' }}</td>
+                <td>{{ reservationhotel.nbrpersonne }}</td>
+                <td>{{ reservationhotel.dateallerreser ? reservationhotel.dateallerreser|date('Y-m-d') : '' }}</td>
+                <td>{{ reservationhotel.dateretourreser ? reservationhotel.dateretourreser|date('Y-m-d') : '' }}</td>
+                <td>{{ reservationhotel.idu }}</td>
+                <td>
+                    <a href="{{ path('app_reservationhotels_show', {'idreservationhotel': reservationhotel.idreservationhotel}) }}">show</a>
+                    <a href="{{ path('app_reservationhotels_edit', {'idreservationhotel': reservationhotel.idreservationhotel}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reservationhotels_new') }}">Create new</a>
+{% endblock %}

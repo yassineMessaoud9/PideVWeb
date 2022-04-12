@@ -1,0 +1,23 @@
+{% extends 'baseadmin.html.twig' %}
+
+
+{% block title %}New Hotel{% endblock %}
+
+{% block body %}
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+    <h1>Create new Hotel</h1>
+        {{ include('hotel/_form.html.twig') }}
+
+     {{ form_widget(form.adresse,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.adresse,{'attr':{'class':'text-danger'}}) }}
+      {{ form_widget(form.nomhotel,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form.nomhotel,{'attr':{'class':'text-danger'}}) }}
+
+    {{ form_widget(form.etoile,{'attr':{'class':'form-control'}}) }}
+   {{ form_errors(form.etoile,{'attr':{'class':'text-danger'}}) }}
+     {{ form_widget(form.nbrchambre,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.nbrchambre,{'attr':{'class':'text-danger'}}) }}
+{{ form_end(form) }}
+    <a href="{{ path('app_hotel_index') }}">back to list</a>
+{% endblock %}

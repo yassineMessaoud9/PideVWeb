@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant index{% endblock %}
+
+{% block body %}
+    <h2>Restaurant </h2>
+<div class="container">  
+
+    <table class="table">
+        <thead class="bg-success">
+            
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                                <td><img src="{{asset('/asma/' ~ restaurant.photo)}}" alt=""style="width: 250px;height:120px"></td>
+                               <td>  <h1> {{ restaurant.nomrestau }}  </h1> </td>
+
+                <td>
+                    <a  class="btn btn-danger"
+href="{{ path('app_reservationrestaurant2_new', {'idrestau': restaurant.idrestau}) }}">reserver</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+    </div>
+{% endblock %}

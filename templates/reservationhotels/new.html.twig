@@ -1,0 +1,25 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Reservationhotels{% endblock %}
+
+{% block body %}
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+    <h1>Create new Reservationhotels</h1>
+
+    {{ include('reservationhotels/_form.html.twig') }}
+     {{ form_widget(form.typechambre,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.typechambre,{'attr':{'class':'text-danger'}}) }}
+      {{ form_widget(form.nbrnuit,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form.nbrnuit,{'attr':{'class':'text-danger'}}) }}
+          {{ form_widget(form.nbrpersonne,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form.nbrpersonne,{'attr':{'class':'text-danger'}}) }}
+            {{ form_widget(form.dateallerreser,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form.dateallerreser,{'attr':{'class':'text-danger'}}) }}
+         {{ form_widget(form.dateretourreser,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form.dateretourreser,{'attr':{'class':'text-danger'}}) }}
+
+         {{ form_end(form) }}
+
+    <a href="{{ path('app_reservationhotels_index') }}">back to list</a>
+{% endblock %}
