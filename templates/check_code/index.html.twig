@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CheckCodeController!{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+    <button class="btn btn-info btn-block my-4" type="submit">Verif</button>
+
+    {{ form_end(form) }}
+
+{% endblock %}

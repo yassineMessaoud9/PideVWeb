@@ -1,0 +1,11 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Commandrestau{% endblock %}
+
+{% block body %}
+    <h1>Create new Commandrestau</h1>
+
+    {{ include('commandrestau/_form.html.twig') }}
+
+    <a href="{{ path('app_commandrestau_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Commandrestau index{% endblock %}
+
+{% block body %}
+    <h1>Commandrestau index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NumCommande</th>
+                <th>PrixCommande</th>
+                <th>DateCommande</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commandrestau in commandrestaus %}
+            <tr>
+                <td>{{ commandrestau.numCommande }}</td>
+                <td>{{ commandrestau.prixCommande }}</td>
+                <td>{{ commandrestau.dateCommande ? commandrestau.dateCommande|date('Y-m-d') : '' }}</td>
+                <td>{{ commandrestau.latitude }}</td>
+                <td>{{ commandrestau.longitude }}</td>
+                <td>{{ commandrestau.etat }}</td>
+                <td>
+                    <a href="{{ path('app_commandrestau_show', {'numCommande': commandrestau.numCommande}) }}">show</a>
+                    <a href="{{ path('app_commandrestau_edit', {'numCommande': commandrestau.numCommande}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commandrestau_new') }}">Create new</a>
+{% endblock %}

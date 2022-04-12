@@ -1,0 +1,56 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Utilisateur index{% endblock %}
+
+{% block body %}
+    <h1>Utilisateur index</h1>
+<div style="overflow-x:auto;">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Photo</th>
+                <th>Pays</th>
+                <th>Activated</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.roles ? utilisateur.roles|join(', ') : '' }}</td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.adresse }}</td>
+                <td><img class="rounded-circle" src="{{asset('/uploads/' ~ utilisateur.photo )}}" alt=""style="width: 200px;height:200px"></td>
+                <td>{{ utilisateur.pays }}</td>
+                <td>{{ utilisateur.activated }}</td>
+                <td>
+                 {% if utilisateur.activated == 'Active' %} <a
+                                href="#"
+                                class="btn btn-dark text-white" href="#">Bloquer</a>
+                        {% else %}<a
+                            href="#"
+                            class="btn btn-pinterest " href="#">Débloquer</a> {% endif %}
+                    <a href="{{ path('app_utilisateur_show', {'id': utilisateur.id}) }}">show</a>
+                    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

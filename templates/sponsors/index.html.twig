@@ -1,0 +1,41 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Sponsors index{% endblock %}
+
+{% block body %}
+    <h1>Sponsors index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomsponsors</th>
+                <th>Prixdonations</th>
+                <th>Datedeb</th>
+                <th>Datefin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sponsor in sponsors %}
+            <tr>
+                <td>{{ sponsor.id }}</td>
+                <td>{{ sponsor.nomsponsors }}</td>
+                <td>{{ sponsor.prixdonations }}</td>
+                <td>{{ sponsor.datedeb ? sponsor.datedeb|date('Y-m-d') : '' }}</td>
+                <td>{{ sponsor.datefin ? sponsor.datefin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_sponsors_show', {'id': sponsor.id}) }}">show</a>
+                    <a href="{{ path('app_sponsors_edit', {'id': sponsor.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sponsors_new') }}">Create new</a>
+{% endblock %}

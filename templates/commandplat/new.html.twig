@@ -1,0 +1,11 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Commandplat{% endblock %}
+
+{% block body %}
+    <h1>Create new Commandplat</h1>
+
+    {{ include('commandplat/_form.html.twig') }}
+
+    <a href="{{ path('app_commandplat_index') }}">back to list</a>
+{% endblock %}

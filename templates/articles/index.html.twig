@@ -1,0 +1,40 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Articles index{% endblock %}
+
+{% block body %}
+    <h1>Articles index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Type Events</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.nom }}</td>
+                <td>{{ article.description }}</td>
+                                <td>{{ article.Categories.nom }}</td>
+
+                <td>
+                    <a href="{{ path('app_articles_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('app_articles_edit', {'id': article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_articles_new') }}">Create new</a>
+{% endblock %}

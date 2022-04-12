@@ -1,0 +1,38 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Sponsors{% endblock %}
+
+{% block body %}
+    <h1>Sponsors</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sponsor.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomsponsors</th>
+                <td>{{ sponsor.nomsponsors }}</td>
+            </tr>
+            <tr>
+                <th>Prixdonations</th>
+                <td>{{ sponsor.prixdonations }}</td>
+            </tr>
+            <tr>
+                <th>Datedeb</th>
+                <td>{{ sponsor.datedeb ? sponsor.datedeb|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ sponsor.datefin ? sponsor.datefin|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sponsors_index') }}">back to list</a>
+
+    <a href="{{ path('app_sponsors_edit', {'id': sponsor.id}) }}">edit</a>
+
+    {{ include('sponsors/_delete_form.html.twig') }}
+{% endblock %}

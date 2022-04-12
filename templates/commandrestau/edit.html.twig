@@ -1,0 +1,13 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Edit Commandrestau{% endblock %}
+
+{% block body %}
+    <h1>Edit Commandrestau</h1>
+
+    {{ include('commandrestau/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_commandrestau_index') }}">back to list</a>
+
+    {{ include('commandrestau/_delete_form.html.twig') }}
+{% endblock %}

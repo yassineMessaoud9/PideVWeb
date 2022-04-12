@@ -1,0 +1,42 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Commandrestau{% endblock %}
+
+{% block body %}
+    <h1>Commandrestau</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>NumCommande</th>
+                <td>{{ commandrestau.numCommande }}</td>
+            </tr>
+            <tr>
+                <th>PrixCommande</th>
+                <td>{{ commandrestau.prixCommande }}</td>
+            </tr>
+            <tr>
+                <th>DateCommande</th>
+                <td>{{ commandrestau.dateCommande ? commandrestau.dateCommande|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ commandrestau.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ commandrestau.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ commandrestau.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commandrestau_index') }}">back to list</a>
+
+    <a href="{{ path('app_commandrestau_edit', {'numCommande': commandrestau.numCommande}) }}">edit</a>
+
+    {{ include('commandrestau/_delete_form.html.twig') }}
+{% endblock %}
