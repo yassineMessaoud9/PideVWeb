@@ -1,0 +1,24 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Adresse{% endblock %}
+
+{% block body %}
+    <div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+        <div class="col">
+
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+    <h1 style="margin-top: 5%" >Create new Adresse</h1>
+
+    {{ include('adresse/_form.html.twig') }}
+    {{ form_widget(form.paysadresse,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.paysadresse,{'attr':{'class':'text-danger'}}) }}
+    {{ form_widget(form.rueadresse,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.rueadresse,{'attr':{'class':'text-danger'}}) }}
+
+    {{ form_widget(form.contactadresse,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.contactadresse,{'attr':{'class':'text-danger'}}) }}
+    {{ form_end(form) }}
+    <a class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true" href="{{ path('app_adresse_index') }}">back to list</a>
+    </div></div>
+{% endblock %}

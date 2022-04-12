@@ -1,0 +1,54 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Vol{% endblock %}
+
+{% block body %}
+    <h1>Vol</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Numvol</th>
+                <td>{{ vol.numvol }}</td>
+            </tr>
+            <tr>
+                <th>Dateallervol</th>
+                <td>{{ vol.dateallervol ? vol.dateallervol|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tempallervol</th>
+                <td>{{ vol.tempallervol }}</td>
+            </tr>
+            <tr>
+                <th>Dateretourvol</th>
+                <td>{{ vol.dateretourvol ? vol.dateretourvol|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tempretourvol</th>
+                <td>{{ vol.tempretourvol }}</td>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td>{{ vol.destination }}</td>
+            </tr>
+            <tr>
+                <th>Classvol</th>
+                <td>{{ vol.classvol }}</td>
+            </tr>
+            <tr>
+                <th>Prixvol</th>
+                <td>{{ vol.prixvol }}</td>
+            </tr>
+            <tr>
+                <th>Typevol</th>
+                <td>{{ vol.typevol }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vol_index') }}">back to list</a>
+
+    <a href="{{ path('app_vol_edit', {'numvol': vol.numvol}) }}">edit</a>
+
+    {{ include('vol/_delete_form.html.twig') }}
+{% endblock %}

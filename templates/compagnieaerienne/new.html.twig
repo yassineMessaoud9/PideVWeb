@@ -1,0 +1,20 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Compagnieaerienne{% endblock %}
+
+{% block body %}
+<div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+        <div class="col">
+        <h1 style="margin-top: 5%">Create new Compagnieaerienne</h1>
+{{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+    
+
+    {{ include('compagnieaerienne/_form.html.twig') }}
+    {{ form_widget(form.nomcompagnie ,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.nomcompagnie,{'attr':{'class':'text-danger'}}) }}
+    {{ form_end(form) }}
+
+    <a class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true" href="{{ path('app_compagnieaerienne_index') }}">back to list</a>
+</div></div>
+{% endblock %}
+

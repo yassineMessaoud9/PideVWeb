@@ -1,0 +1,66 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+  
+
+		
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0"> adresse  </h3>
+			   
+              
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    
+                    <th scope="col">id adresse</th>
+                    <th scope="col">pays adresse</th>
+                    <th scope="col">rue adresse</th>
+                    
+                    <th scope="col">contact adresse</th>
+                  </tr>
+                </thead>
+                <tbody>
+				  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                       
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{ adresse.idadresse }}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                    {{ adresse.paysadresse }}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                       {{ adresse.rueadresse }}
+                      </span>
+                    </td>
+                    <td>
+              {{ adresse.contactadresse }}
+                    </td>
+                 
+                
+                  </tr>
+                   
+                  
+                 
+
+                 
+                   
+                  
+                </tbody>
+              </table>
+            </div>
+         
+</div>
+
+    {{ include('adresse/_delete_form.html.twig') }}
+ <a href="{{ path('app_adresse_index') }}" class="btn btn-outline-primary btn-lg btn-block " style="margin-top:1% " role="button" aria-pressed="true">back to list</a>
+{% endblock %}

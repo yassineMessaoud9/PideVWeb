@@ -1,0 +1,14 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Edit Vol{% endblock %}
+
+{% block body %}
+<div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+    <h1 style="margin-top: 5%">Edit Vol</h1>
+
+    {{ include('vol/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_vol_index') }}"class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true">back to list</a>
+
+    
+{% endblock %}
