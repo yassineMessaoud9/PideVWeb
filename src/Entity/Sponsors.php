@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Sponsors
@@ -25,6 +26,7 @@ class Sponsors
      * @var string
      *
      * @ORM\Column(name="nomSponsors", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="champ required")
      */
     private $nomsponsors;
 
@@ -32,6 +34,7 @@ class Sponsors
      * @var float
      *
      * @ORM\Column(name="prixDonations", type="float", precision=10, scale=0, nullable=false)
+     * @Assert\NotBlank(message="champ required")
      */
     private $prixdonations;
 
@@ -39,6 +42,10 @@ class Sponsors
      * @var \DateTime
      *
      * @ORM\Column(name="dateDeb", type="date", nullable=false)
+     * @Assert\LessThanOrEqual(
+     *     value="0 days",
+     *     message="should today's date or less"
+     * )
      */
     private $datedeb;
 
@@ -46,6 +53,10 @@ class Sponsors
      * @var \DateTime
      *
      * @ORM\Column(name="dateFin", type="date", nullable=false)
+     * @Assert\GreaterThan(
+     *     value="0 days",
+     *     message="today's date or more"
+     * )
      */
     private $datefin;
 

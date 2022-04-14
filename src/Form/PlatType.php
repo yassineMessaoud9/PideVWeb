@@ -49,6 +49,8 @@ class PlatType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Plat::class,
+            'attr'=>['novalidate'=>'novalidate']
+
         ]);
     }
 }

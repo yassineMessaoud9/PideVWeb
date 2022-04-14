@@ -144,7 +144,8 @@
   </svg>
   <div>
 {{ error.messageKey|trans(error.messageData, 'security') }}  </div>
-</div>    {% endif %}
+</div>   
+ {% endif %}
 
 
               <form role="form" method="post">
@@ -224,6 +225,19 @@
         application: "argon-dashboard-free"
       });
   </script>
+
+  <script>
+            var botmanWidget = {
+            frameEndpoint: '{{ path("chatframe") }}',
+            chatServer: '{{ path("message") }}',
+            introMessage: 'Hello, I am a Trip To Do chatbot ',
+            title: 'Trip To Do Chatbot', 
+            mainColor: '#456765',
+            bubbleBackground: '#ff76f4',
+            aboutText: ''
+        };
+</script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </body>
 
 </html>

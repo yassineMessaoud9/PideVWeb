@@ -129,7 +129,7 @@
 
 
 
-       {{ form_start(registrationForm) }}
+       {{ form_start(registrationForm, {attr:{novalidate:'novalidate'} }) }}
 
         {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
         

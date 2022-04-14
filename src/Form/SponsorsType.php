@@ -4,8 +4,11 @@ namespace App\Form;
 
 use App\Entity\Sponsors;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class SponsorsType extends AbstractType
 {
@@ -15,7 +18,15 @@ class SponsorsType extends AbstractType
             ->add('nomsponsors')
             ->add('prixdonations')
             ->add('datedeb')
-            ->add('datefin')
+            ->add('datefin',DateType::class,[
+                'constraints'=>[
+                    new GreaterThan(
+                        [
+                            'propertyPath'=>'parent.all[datedeb].data'
+                        ]
+                    )
+                ]
+            ])
         ;
     }
 
@@ -23,6 +34,8 @@ class SponsorsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Sponsors::class,
+            'attr'=>['novalidate'=>'novalidate']
+
         ]);
     }
 }

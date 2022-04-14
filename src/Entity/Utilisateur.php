@@ -45,19 +45,19 @@ class Utilisateur implements UserInterface ,\Serializable
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     * @Assert\NotBlank(message="please enter your name")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     * @Assert\NotBlank(message="please enter your prenom")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
+     * 
      */
     private $adresse;
 
@@ -69,7 +69,7 @@ class Utilisateur implements UserInterface ,\Serializable
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     * @Assert\NotBlank(message="please enter pays")
      */
     private $pays;
 

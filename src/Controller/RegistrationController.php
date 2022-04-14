@@ -57,10 +57,9 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-           $email = new MailerController();
-           $email->sendEmail($mailer,$to,$subj,$msj);
+        //    $email = new MailerController();
+        //     $email->sendEmail($mailer,$to,$subj,$msj);
             return $this->redirectToRoute('app_login');
-            var_dump($form->getData());
         }
 
         return $this->render('registration/register.html.twig', [
@@ -107,8 +106,8 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
           
-            $email = new MailerController();
-            $email->sendEmail($mailer,$to,$subj,$msj);
+            // $email = new MailerController();
+            // $email->sendEmail($mailer,$to,$subj,$msj);
             return $this->redirectToRoute('app_login');
 
         }

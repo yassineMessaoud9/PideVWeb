@@ -22,6 +22,8 @@ class ArticlesType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Articles::class,
+            'attr'=>['novalidate'=>'novalidate']
+
         ]);
     }
 }
