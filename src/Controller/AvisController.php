@@ -30,25 +30,26 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_avis_new", methods={"GET", "POST"})
+     * @Route("/new", name="app_avis_new", methods={"GET" })
+     */
+    public function getNew(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        return $this->render('avis/new.html.twig');
+    }
+
+    /**
+     * @Route("/new", name="app_avis_new_post", methods={"POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $avi = new Avis();
-        $form = $this->createForm(AvisType::class, $avi);
-        $form->handleRequest($request);
+        $avi->setNomavis($_POST["nomAvis"]);
+        $avi->setRate($_POST["rate"]);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($avi);
-            $entityManager->flush();
+        $entityManager->persist($avi);
+        $entityManager->flush();
 
-            return $this->redirectToRoute('app_avis_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('avis/new.html.twig', [
-            'avi' => $avi,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('app_avis_index', [], Response::HTTP_SEE_OTHER);
     }
 
     /**

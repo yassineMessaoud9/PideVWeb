@@ -59,7 +59,7 @@ class Evenement
      * @Assert\DateTime(format="Y/m/d")
      * @Assert\LessThanOrEqual(
      *     value="0 days",
-     *     message="should today's date or less"
+     *     message="should be today's date or less"
      * )
      * @ORM\Column(name="datedebutEve", type="date", nullable=false)
      */

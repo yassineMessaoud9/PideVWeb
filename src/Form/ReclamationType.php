@@ -23,6 +23,7 @@ class ReclamationType extends AbstractType
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
                 'format'=>'MM/dd/yyyy'
+
             ])
             ->add('intitulereclamation')
             ->add('etatreclamation',choiceType::class,[

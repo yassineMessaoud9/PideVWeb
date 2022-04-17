@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Modal</title>
+{% extends 'base.html.twig' %}
+
+  {% block stylesheets %}
+    {{ parent() }}
   <link href="{{ asset('frontoffice/css/styles.css')}}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/rating.css') }}" />
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="{{ asset('frontoffice/js/rating.js') }}"></script>
-  <script defer src="{{ asset('frontoffice/js/script2.js')}}"></script>
-</head>
-<body>
+  {% endblock %}
 
+{% block body %}
   <button data-modal-target="#modal">Open Modal</button>
   <div class="modal" id="modal">
     <div class="modal-header">
@@ -20,11 +14,55 @@
       <button data-close-button class="close-button">&times;</button>
     </div>
     <div class="modal-body">
+      <div class="container">
 
-      {% block body %}
-      {% endblock %}
+        <h1>Feel Free to rate us :D</h1>
+
+
+        <form id="rates" name="avis" method="post" action="/avis/new">
+          <div id="avis">
+            <div class="form-group">
+              <label for="avis_rate" class="required">Rate</label>
+              <div class="stars">
+                <input type="radio" id="avis_rate5" name="rate" required="required" class="form-control"
+                       value="1" hidden>
+                <label for="avis_rate5" class="fa fa-star-o rating fa-2xl rating-1"></label>
+                <input type="radio" id="avis_rate4" name="rate" required="required" class="form-control"
+                       value="2" hidden>
+                <label for="avis_rate4" class="fa fa-star-o rating   fa-2xl rating-2"></label>
+                <input type="radio" id="avis_rate3" name="rate" required="required" class="form-control"
+                       value="3" hidden>
+                <label for="avis_rate3" class="fa fa-star-o rating   fa-2xl rating-3"></label>
+                <input type="radio" id="avis_rate2" name="rate" required="required" class="form-control"
+                       value="4" hidden>
+                <label for="avis_rate2" class="fa fa-star-o rating   fa-2xl rating-4"></label>
+                <input type="radio" id="avis_rate1" name="rate" required="required" class="form-control"
+                       value="5" hidden>
+                <label for="avis_rate1" class="fa fa-star-o rating  fa-2xl rating-5"></label>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="avis_nomavis" class="required">Nomavis</label>
+              <input type="text" id="avis_nomavis" name="nomAvis" required="required" maxlength="100"
+                     class="form-control">
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
   <div id="overlay"></div>
-</body>
-</html>
+{% endblock %}
+  {% block javascripts %}
+    {{ parent() }}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('frontoffice/js/rating.js') }}"></script>
+    <script defer src="{{ asset('frontoffice/js/script2.js')}}"></script>
+  <script src="https://kit.fontawesome.com/a57bc20768.js" crossorigin="anonymous"></script>
+{% endblock %}

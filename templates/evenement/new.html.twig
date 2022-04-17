@@ -6,8 +6,8 @@
     {{ form_start(form, {attr:{novalidate:'novalidate'} }) }}
 
     <div class="d-flex mb-3">
-        <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_evenement_indexback') }}"><i class="fa-solid fa-circle-left"></i></a>
-        <h1 style="margin-left: 35%; color: blue">Create new Evenement</h1>
+        <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_evenement_indexback') }}"><i class="fa fa fa-angle-left"aria-hidden="true"></i></a>
+        <h1 style="margin-left: 35%; color:blue">Create new Evenement</h1>
     </div>
 
 
@@ -25,3 +25,7 @@
     {{ include('evenement/_form.html.twig') }}
 
 {% endblock %}
+{% block javascripts %}
+{{ parent() }}
+
+{%  endblock %}

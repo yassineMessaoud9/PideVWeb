@@ -46,13 +46,12 @@ class Reclamation
 
     /**
      * @var \DateTime
-     * @Assert\NotBlank(message="select a date")
+     * @ORM\Column(name="dateReclamation", type="date", nullable=false)
      * @Assert\DateTime(format="Y/m/d")
      * @Assert\GreaterThanOrEqual (
      *     value="0 days",
      *     message="today's date "
      * )
-     * @ORM\Column(name="dateReclamation", type="date", nullable=false)
      */
     private $datereclamation;
 

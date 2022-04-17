@@ -9,7 +9,7 @@
     <table class="table">
         <thead class="bg-success">
             <tr>
-                <th>IdReclamation</th>
+
                 <th>TypeReclamation</th>
                 <th>Description</th>
                 <th>DateReclamation</th>
@@ -21,7 +21,7 @@
         <tbody>
         {% for reclamation in reclamations %}
             <tr>
-                <td>{{ reclamation.idreclamation }}</td>
+
                 <td>{{ reclamation.typereclamation }}</td>
                 <td>{{ reclamation.description }}</td>
                 <td>{{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</td>

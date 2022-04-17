@@ -20,13 +20,13 @@ class EvenementType extends AbstractType
             ->add('prixeve')
             ->add('datedebuteve', DateType::class, [
                 'label' => 'Date de début',
-                'widget' => 'single_text',
+                'widget'=>'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('datefineve', DateType::class, [
                 'label' => 'Date de fin',
-                'widget' => 'single_text',
+                'widget'=>'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
             ])

@@ -28,6 +28,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
 body{
+	position: relative;
 	font-family: 'Open Sans', sans-serif;
 	background:#FFF;
 }
@@ -1106,7 +1107,7 @@ input[type="search"].sb-search-input {
 	position: absolute;
 	bottom: 0px;
 	z-index: 999;
-	left: 48%;
+	left: 44%;
 }
 /*----//End-copy-right-----*/
 /*----//End-footer----*/
@@ -2441,9 +2442,6 @@ span.mail a:hover{
 	.blog-poast-info ul li {
 		margin-right: 0.8em;
 	}
-	.to-top span {
-		left: 44%;
-	}
 	.blog-grids-head h3 {
 		font-size: 1.2em;
 		color: #7F91A2;
@@ -2669,9 +2667,6 @@ span.mail a:hover{
 	.blog-poast-info ul li {
 		margin-right: 0.8em;
 		display: block;
-	}
-	.to-top span {
-		left: 44%;
 	}
 	.blog-grids-head h3 {
 		font-size: 1.2em;

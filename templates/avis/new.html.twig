@@ -1,13 +1,73 @@
 {% extends 'index.html.twig' %}
 
 {% block title %}New Avis{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/css/star-rating.min.css">
 
+    <style>
+        .rating {
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
 {% block body %}
-    <div class="container">
-    <h1>Feel Free to rate us :D</h1>
 
-    {{ include('avis/_form.html.twig') }}
+{% endblock %}
 
-    {#  <a href="{{ path('app_avis_index') }}">back to list</a>#}
-    </div>
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/js/star-rating.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script>
+        const stars = document.querySelectorAll("label.rating");
+        stars.forEach(star => {
+            const classList = star.classList;
+            const classNumber = classList[classList.length - 1];
+            const starNumber = classNumber[classNumber.length - 1];
+
+            const fillSiblings = () => {
+                for (let i = 0; i <= classList.length; i++) {
+                    if (i< starNumber) {
+                        stars[i].classList.remove("fa-star-o")
+                        stars[i].classList.add("fa-solid");
+                        stars[i].classList.add("fa-star");
+                        stars[i].style.color = "yellow"
+                    }
+                    else {
+                        stars[i].classList.add("fa-star-o")
+                        stars[i].classList.remove("fa-solid");
+                        stars[i].classList.remove("fa-star");
+                        stars[i].style.removeProperty("color");
+                    }
+                }
+            }
+
+            const unFillSiblings = () => {
+                for (let i = 0; i < starNumber; i++) {
+                    stars[i].classList.add("fa-star-o")
+                    stars[i].classList.remove("fa-solid");
+                    stars[i].classList.remove("fa-star");
+                    stars[i].style.removeProperty("color");
+                }
+            }
+
+            star.addEventListener("mouseover", fillSiblings)
+            star.addEventListener("mouseout", unFillSiblings)
+            star.addEventListener("click", () =>{
+                stars.forEach(s => {
+                    s.removeEventListener("mouseout", unFillSiblings);
+                    s.removeEventListener("mouseover", fillSiblings);
+                })
+                fillSiblings()
+            })
+
+        })
+
+
+    </script>
+
+
 {% endblock %}
