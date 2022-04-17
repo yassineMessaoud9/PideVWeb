@@ -8,28 +8,31 @@
 
 {% block body %}
     {{ form_start(form, {attr:{novalidate:'novalidate'} }) }}
-    <div class="d-flex mb-3">
-        <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_ticket_index') }}"><i class="fa-solid fa-circle-left"></i></a>
-        <h1 style="margin-left: 35%; color: blue">Create new Ticket</h1>
-    </div>
 
 
-    {{ include('ticket/_form.html.twig') }}
+    <div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+        <div class="col">
+            <div class="d-flex mb-3">
+                <a class="btn btn-primary mt-3" style="max-height: 35px" href="{{ path('app_ticket_index') }}"><i class="fa fa fa-angle-left"aria-hidden="true"></i></a>
 
+            </div>
 
-    {# {{ form_widget(form.prixticket, {'attr':{'class':'form-control' }}) }}
-    {{ form_errors(form.prixticket, {'attr':{'class':'text-danger' }}) }}
+            {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
 
-    {{ form_widget(form.dateticket, {'attr':{'class':'form-control' }}) }}
-    {{ form_errors(form.dateticket, {'attr':{'class':'text-danger' }}) }}
+            <h1 style="margin-top: 5%">Create new Ticket</h1>
 
-
-    {{ form_widget(form.ideve, {'attr':{'class':'form-control' }}) }}
-    {{ form_errors(form.ideve, {'attr':{'class':'text-danger' }}) }} #}
+            {{ include('ticket/_form.html.twig') }}
 
 
 
-    {#  <a class="btn btn-success" href="{{ path('app_ticket_index') }}">back to list</a>#}
+            {{ form_end(form) }}
+
+
+            <a href="{{ path('app_ticket_index') }}" class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true">back to list</a>
+
+        </div> </div>
+
+
 
     {{ form_end(form) }}
 

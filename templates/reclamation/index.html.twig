@@ -3,44 +3,106 @@
 {% block title %}Reclamation index{% endblock %}
 
 {% block body %}
-    <h1 style="color: blue";text-align:center; margin-bottom: 3rem  >Reclamation index</h1>
+    <h1></h1>
 
-    <table class="table">
-        <thead class="bg-success">
-            <tr>
-                <th>IdReclamation</th>
-                <th>TypeReclamation</th>
-                <th>Description</th>
-                <th>Datereclamation</th>
-                <th>Intitulereclamation</th>
-                <th>Etatreclamation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reclamation in reclamations %}
-            <tr>
-                <td>{{ reclamation.idreclamation }}</td>
-                <td>{{ reclamation.typereclamation }}</td>
-                <td>{{ reclamation.description }}</td>
-                <td>{{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</td>
-                <td>{{ reclamation.intitulereclamation }}</td>
-                <td>{{ reclamation.etatreclamation }}</td>
-                <td>
-                    {#  <a class="btn btn-success" href="{{ path('app_reclamation_show', {'idreclamation': reclamation.idreclamation}) }}">show</a>#}
-                    <a class="btn btn-danger" href="{{ path('app_reclamation_editAdmin', {'idreclamation': reclamation.idreclamation}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    {#  <a href="{{ path('app_reclamation_new') }}">Create new</a>#}
+    <div class="row">
+        <div class="col">
+
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Table des Reclamations </h3>
+                </div>
+                <div class="table-responsive ">
+                    <table class="table align-items-center table-flush">
+                        <thead class="bg-gradient-blue ">
+                        <tr>
+                            <th>IdReclamation</th>
+                            <th>TypeReclamation</th>
+                            <th>Description</th>
+                            <th>Datereclamation</th>
+                            <th>Intitulereclamation</th>
+                            <th>Etatreclamation</th>
+                            <th scope="col" style="text-align: center">actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reclamation in reclamations  %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+
+                                        <div class="media-body">
+                                            <span class="mb-0 text-sm" style="text-align: center">{{ reclamation.idreclamation}}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td style="text-align: center">
+                                    {{  reclamation.typereclamation}}
+                                </td>
+                                <td>
+                      <span class="badge badge-dot mr-4" style="text-align: center">
+                        <i class="bg-danger"></i> {{   reclamation.description }}
+                      </span>
+                                </td>
+                                <td>
+                                    {{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : ''  }}
+                                </td>
+                                <td style="text-align: center">
+                                    {{  reclamation.intitulereclamation }}
+                                </td>
+                                <td style="text-align: center">
+                                    {{ reclamation.etatreclamation }}
+                                </td>
+
+
+                                <td>
+                                    {# data-toggle="modal" data-target="#modal-notification" #}
+                                    <a   class="btn btn-danger " role="button" aria-pressed="true" href="{{  path('app_reclamation_editAdmin', {'idreclamation': reclamation.idreclamation})  }}">
+
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="currentColor"
+                                                class="bi bi-trash"
+                                                viewBox="0 0 16 16"
+                                        >
+                                            <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                                            />
+                                            <path
+                                                    fill-rule="evenodd"
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                                            />
+                                        </svg>
+                                    </a>
+
+
+                            </tr>
+                            </td>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">no records found</td>
+                            </tr>
+                        {% endfor %}
+
+
+
+
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <style>
