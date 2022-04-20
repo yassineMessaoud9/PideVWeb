@@ -2,6 +2,7 @@
 
 {% block title %}Evenement index{% endblock %}
 
+
 {% block body %}
     <h1></h1>
 
@@ -17,6 +18,19 @@
                         + Ajouter Event
                     </a>
                 </div>
+
+                <div class="box bg-gradient-primary">
+                    <select>
+                        <option>par prix</option>
+                        <option>par place</option>
+                    </select>
+                </div>
+
+                <form class="example" action="/search">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+
                 <div class="table-responsive ">
                     <table class="table align-items-center table-flush">
                         <thead class="bg-gradient-blue ">
@@ -153,4 +167,90 @@
             color: white;
         }
     </style>
+    <style>
+        form.example input[type=text] {
+            margin:1rem;
+            padding: 5px;
+            font-size: 17px;
+            border: 1px solid grey;
+            float: left;
+            width: 30%;
+            background: #f1f1f1;
+        }
+
+        /* Style the submit button */
+        form.example button {
+            margin:1rem;
+            float: left;
+            width: 10%;
+            padding: 5px;
+            background: #007bff;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none; /* Prevent double borders */
+            cursor: pointer;
+        }
+
+        form.example button:hover {
+            background: #007bff;
+        }
+
+        /* Clear floats */
+        form.example::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+    <style>
+
+
+        .box {
+            position: absolute;
+            top: 12%;
+            left: 7.5%;
+            transform: translate(-50%, -50%);
+        }
+
+        .box select {
+            background-color:#007bff;
+            color: white;
+            padding: 8px;
+            width: 200px;
+            border: none;
+            font-size: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            -webkit-appearance: button;
+            appearance: button;
+            outline: none;
+        }
+
+        .box::before {
+            content: "\f13a";
+            font-family: FontAwesome;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10%;
+            height: 100%;
+
+            text-align:left;
+            font-size: 28px;
+            line-height: 45px;
+            color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+
+        .box:hover::before {
+            color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .box select option {
+            padding: 30px;
+        }
+    </style>
+
 {% endblock %}

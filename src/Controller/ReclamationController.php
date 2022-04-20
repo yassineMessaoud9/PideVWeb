@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/reclamation")
@@ -65,6 +67,28 @@ class ReclamationController extends AbstractController
             'reclamation' => $reclamation,
             'form' => $form->createView(),
         ]);
+    }
+    /**
+     * @Route ("/print" , name="print")
+     */
+    public function Print():Response
+    {
+        $pdfoptions=new Options();
+        $pdfoptions->set('defaultFont','Arial');
+        $pdfoptions->setIsRemoteEnabled(true);
+        $pdfoptions->set('isHtml5ParserEnabled',true);
+        $pdfoptions->set('isRemoteEnabled',true);
+        $dompdf= new Dompdf($pdfoptions);
+        $reclamation = new Reclamation();
+        $html=$this->renderView('reclamation/pdfprint.html.twig',[
+            'reclamation'=>$reclamation,
+        ]);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4','landscape');
+        $dompdf->render();
+        //$dompdf->stream("yassinepdf.pdf", ["Attachment"=>true]);
+        $dompdf->stream("yassinepdf.pdf", ["Attachment"=>false]);
+
     }
 
     /**
@@ -129,6 +153,7 @@ class ReclamationController extends AbstractController
 
         return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
     }
+
     public function filterwords($text)
     {
         $filterWords = array('fokalaomok', 'bhim', 'msatek', 'fuck', 'slut', 'fucku', 'mofo');
@@ -151,4 +176,5 @@ class ReclamationController extends AbstractController
         }
         return $str;
     }
+
 }

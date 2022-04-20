@@ -140,4 +140,21 @@ class EvenementController extends AbstractController
 
         return $this->redirectToRoute('app_evenement_index', [], Response::HTTP_SEE_OTHER);
     }
+    /**
+     * @Route("/search", name="app_evenement_search", methods={"POST","GET"})
+     */
+    public function Search(Request $request) {
+
+
+        $evenement = new Evenement();
+        $form = $this->createForm(EvenementType::class, $evenement);
+        $form->handleRequest($request);
+
+        $evenements= $this->getDoctrine()->getRepository(Evenement::class)->findAll();
+
+
+        return $this->redirectToRoute('app_evenement_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
 }
