@@ -1,4 +1,13 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
+{% endblock %}
+
 
 {% block title %}Contact{% endblock %}
 
@@ -13,12 +22,3 @@
 {%  block javascripts %}
 
 {% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-        .table>thead>tr>th{
-            color: white;
-        }
-    </style>
-{% endblock %}
-

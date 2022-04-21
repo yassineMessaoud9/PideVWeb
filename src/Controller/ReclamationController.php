@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Reclamation;
 use App\Form\ReclamationType;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,20 +73,25 @@ class ReclamationController extends AbstractController
     /**
      * @Route ("/print" , name="print")
      */
-    public function Print():Response
+    public function Print(EntityManagerInterface $entityManager):Response
     {
         $pdfoptions=new Options();
+
         $pdfoptions->set('defaultFont','Arial');
         $pdfoptions->setIsRemoteEnabled(true);
         $pdfoptions->set('isHtml5ParserEnabled',true);
         $pdfoptions->set('isRemoteEnabled',true);
         $dompdf= new Dompdf($pdfoptions);
-        $reclamation = new Reclamation();
+        $reclamations = $entityManager
+            ->getRepository(Reclamation::class)
+            ->findAll();
         $html=$this->renderView('reclamation/pdfprint.html.twig',[
-            'reclamation'=>$reclamation,
+            'reclamations'=>$reclamations
         ]);
+
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4','landscape');
+
         $dompdf->render();
         //$dompdf->stream("yassinepdf.pdf", ["Attachment"=>true]);
         $dompdf->stream("yassinepdf.pdf", ["Attachment"=>false]);
