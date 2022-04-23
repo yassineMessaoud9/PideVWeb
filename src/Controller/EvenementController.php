@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Evenement;
 use App\Form\EvenementType;
+use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,6 +48,32 @@ class EvenementController extends AbstractController
             'evenements' => $evenements,
         ]);
     }
+    /**
+     * @Route("/sort", name="app_evenement_sort", methods={"GET"})
+     */
+    public function sortbyprix(EntityManagerInterface $entityManager): Response
+    {
+        $evenements = $entityManager
+            ->getRepository(Evenement::class)
+            ->findBy(array(),array('prixeve'=>'DESC'));
+
+        return $this->render('evenement/index.html.twig', [
+            'evenements' => $evenements,
+        ]);
+    }
+    /**
+     * @Route("/sortPlace", name="app_evenement_place", methods={"GET"})
+     */
+    public function sortbyPlace(EntityManagerInterface $entityManager): Response
+    {
+        $evenements = $entityManager
+            ->getRepository(Evenement::class)
+            ->findBy(array(),array('nbplaceeve'=>'ASC'));
+
+        return $this->render('evenement/index.html.twig', [
+            'evenements' => $evenements,
+        ]);
+    }
 
     /**
      * @Route("/new", name="app_evenement_new", methods={"GET", "POST"})
@@ -85,6 +112,22 @@ class EvenementController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    /**
+     * @Route("/", name="app_recherche", methods={"GET","POST"})
+     */
+    public function rechercher(Request $request,EvenementRepository $repository)
+    {
+
+        if ($request->isMethod("POST")) {
+            $nom = $request->get('marque');
+            $evenements = $repository->findEntities($nom);
+        }
+
+        return $this->render('evenement/index.html.twig', [
+            'evenements' => $evenements,
+        ]);
+    }
+
 
     /**
      * @Route("/{ideve}", name="app_evenement_show", methods={"GET"})
@@ -140,21 +183,7 @@ class EvenementController extends AbstractController
 
         return $this->redirectToRoute('app_evenement_index', [], Response::HTTP_SEE_OTHER);
     }
-    /**
-     * @Route("/search", name="app_evenement_search", methods={"POST","GET"})
-     */
-    public function Search(Request $request) {
 
-
-        $evenement = new Evenement();
-        $form = $this->createForm(EvenementType::class, $evenement);
-        $form->handleRequest($request);
-
-        $evenements= $this->getDoctrine()->getRepository(Evenement::class)->findAll();
-
-
-        return $this->redirectToRoute('app_evenement_index', [], Response::HTTP_SEE_OTHER);
-    }
 
 
 }

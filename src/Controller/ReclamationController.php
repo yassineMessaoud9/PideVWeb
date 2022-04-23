@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Twilio\Rest\Client;
+
 
 /**
  * @Route("/reclamation")
@@ -61,6 +63,21 @@ class ReclamationController extends AbstractController
                 $reclamation->setDescription($rr);
                 $entityManager->persist($reclamation);
                 $entityManager->flush();
+
+
+                    $sid    = "AC7caedd3a6b9c25ac6b692e7e107ad122";
+                    $token  = "5baef8f953a0d6d9c7a4cfa7300a05f0";
+                    $twilio = new Client($sid, $token);
+
+                    $message = $twilio->messages
+                        ->create("+21656788559", // to
+                            array(
+                                'from' => "+13042444539",
+                                "body" => "Reclamation envoyé aves sucées"
+                            )
+                        );
+
+                    print($message->sid);
 
                 return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
         }

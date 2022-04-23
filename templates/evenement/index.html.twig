@@ -20,15 +20,28 @@
                 </div>
 
                 <div class="box bg-gradient-primary">
-                    <select>
-                        <option>par prix</option>
-                        <option>par place</option>
+                    <select id ="dynamic_select">
+                        <option> Methode Tri</option>
+                        <option value="{{path('app_evenement_sort') }}">par prix</option>
+
+                        <option  value="{{path('app_evenement_place') }}">par place</option>
                     </select>
                 </div>
 
-                <form class="example" action="/search">
+                {#  <form class="example" action="/evenement/search">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
+                </form>#}
+                <form method= "POST">
+                    <div class="input-group input-group-rounded input-group-merge">
+                        <input type="text" name ="marque" class="form-control form-control-rounded form-control-prepended" placeholder="Rechercher" aria-label="Search">
+
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <span class="fa fa-search"></span>
+                            </div>
+                        </div>
+                    </div>
                 </form>
 
                 <div class="table-responsive ">
@@ -253,4 +266,19 @@
         }
     </style>
 
+{% endblock %}
+	{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            // bind change event to select
+            $('#dynamic_select').on('change', function () {
+                var url = $(this).val(); // get selected value
+                if (url) { // require a URL
+                    window.location = url; // redirect
+                }
+                return false;
+            });
+        });
+    </script>
 {% endblock %}

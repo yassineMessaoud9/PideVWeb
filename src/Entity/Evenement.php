@@ -10,7 +10,8 @@ use Symfony\Component\HttpFoundation\File\File;
  * Evenement
  *
  * @ORM\Table(name="evenement")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\EvenementRepository")
+ *
  */
 class Evenement
 {
