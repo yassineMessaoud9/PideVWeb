@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 
 /**
  * @Route("/adresse")
@@ -50,6 +53,46 @@ class AdresseController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    /**
+     * @Route ("/omarftr" , name="print")
+     */
+    public function Print(EntityManagerInterface $entityManager):Response
+    {
+        $pdfoptions=new Options();
+
+        $pdfoptions->set('defaultFont','Arial');
+        $pdfoptions->setIsRemoteEnabled(true);
+        $pdfoptions->set('isHtml5ParserEnabled',true);
+        $pdfoptions->set('isRemoteEnabled',true);
+        $dompdf= new Dompdf($pdfoptions);
+        $adresse = $entityManager
+            ->getRepository(adresse::class)
+            ->findAll();
+        $html=$this->renderView('adresse/pdf.html.twig',[
+            'adresses' => $adresse
+
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4','landscape');
+
+        $dompdf->render();
+        //$dompdf->stream("yassinepdf.pdf", ["Attachment"=>true]);
+        $dompdf->stream("asmapdf.pdf", ["Attachment"=>false]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @Route("/{idadresse}", name="app_adresse_show", methods={"GET"})

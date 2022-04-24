@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\VolRepository;
+use DateTime;
 
 /**
  * @Route("/vol")
@@ -111,4 +113,28 @@ class VolController extends AbstractController
 
         return $this->redirectToRoute('app_vol_index', [], Response::HTTP_SEE_OTHER);
     }
+    /**
+     * @Route("/", name="app_recherche_date", methods={"POST"})
+     */
+    public function rechercherdate(Request $request,VolRepository $A)
+    {
+        $em = $this-> getDoctrine()->getManager();
+        $vol=$em->getRepository(Vol::class)->findall();
+        if( $request->isMethod("POST") )
+        {
+            $datealler =$request->get('datealler');
+            $dateretour =$request->get('dateretour');
+            
+            $d=new DateTime('2022-03-05');
+            
+
+            $vol =$A->finddate( $datealler, $dateretour);
+        }
+
+        return $this->render('vol/index.html.twig', [
+            'vols' => $vol,
+        ]);
+    }
+
+    
 }

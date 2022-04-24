@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * Vol
  *
  * @ORM\Table(name="vol", indexes={@ORM\Index(name="fkcomvol", columns={"idcompagnie"}), @ORM\Index(name="fkvolavion", columns={"numserieavion"})})
- * @ORM\Entity
+ * @ORM\Entity (repositoryClass="App\Repository\VolRepository")
  */
 class Vol
 {
@@ -26,6 +27,10 @@ class Vol
      * @var \DateTime
      * 
      * @ORM\Column(name="dateallervol", type="date", nullable=false)
+     *@Assert\Range(
+     *      min = "now",
+     *      max = "last day of December "
+     * )
      */
     private $dateallervol;
 
@@ -38,14 +43,20 @@ class Vol
 
     /**
      * @var \DateTime
-    
+     * @Assert\GreaterThan(
+     *     value="0 days",
+     *     message="date superieur a date debut"
+     * )
      *
      * @ORM\Column(name="dateretourvol", type="date", nullable=false)
+     * 
+     * 
      */
     private $dateretourvol;
 
     /**
      * @var string
+     * @Assert\NotBlank(message="destination  doit etre non vide")
      *
      * @ORM\Column(name="tempretourvol", type="string", length=100, nullable=false)
      */
@@ -79,7 +90,7 @@ class Vol
 
     /**
      * @var string
-     *@Assert\NotBlank(message="prix  doit etre non vide")
+     *@Assert\NotBlank(message="typevol  doit etre non vide")
      *@Assert\Length(
      *      min = 8,
      *      minMessage=" Entrer un nom au mini de 8 caracteres"

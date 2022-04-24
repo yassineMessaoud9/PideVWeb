@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Avion;
 use App\Form\AvionType;
+use App\Repository\AvionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,4 +94,39 @@ class AvionController extends AbstractController
 
         return $this->redirectToRoute('app_avion_index', [], Response::HTTP_SEE_OTHER);
     }
+     /**
+     * @Route("/", name="app_recherche", methods={"POST"})
+     */
+    public function rechercher(Request $request,AvionRepository $A)
+    {
+        $em = $this-> getDoctrine()->getManager();
+        $avion=$em->getRepository(Avion::class)->findall();
+        if( $request->isMethod("POST"))
+        {
+            $marque =$request->get('marque');
+            
+
+            $avion =$A->findEntities($marque);
+        }
+
+        return $this->render('avion/index.html.twig', [
+            'avions' => $avion,
+        ]);
+    }
+/**
+     * @Route("/trier/list", name="trierD")
+      */
+      public function trierF(AvionRepository $repository, Request $request)
+      {
+        
+      
+        $formations=$repository->tri();
+         
+        return $this->render('avion/index.html.twig', [
+            'avions' => $formations
+        ]);
+        }
+
+ 
+
 }

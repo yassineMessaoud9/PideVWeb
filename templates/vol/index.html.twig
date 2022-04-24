@@ -4,6 +4,21 @@
 
 {% block body %}
     <h1></h1>
+     <form method= "POST">
+          <div class="input-group input-group-rounded input-group-merge">
+            <input type="date" name ="datealler" class="form-control form-control-rounded form-control-prepended" placeholder="Recherche selon marque" aria-label="Search">
+             <input type="date" name ="dateretour" class="form-control form-control-rounded form-control-prepended" placeholder="Recherche selon marque" aria-label="Search">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                 {# <a href="{{ path('app_recherche_date')}}"> #}
+                
+                  <input class="btn btn-sm btn-primary"   type="submit" value ="Filtrer" class="fa fa-search">
+                  &nbsp&nbsp<span class="fa fa-search"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
 
     
 <div class="row">

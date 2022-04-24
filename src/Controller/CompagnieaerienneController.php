@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/compagnieaerienne")
@@ -18,16 +19,27 @@ class CompagnieaerienneController extends AbstractController
     /**
      * @Route("/", name="app_compagnieaerienne_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager ,PaginatorInterface $paginator, Request $request): Response
     {
         $compagnieaeriennes = $entityManager
             ->getRepository(Compagnieaerienne::class)
             ->findAll();
+            $allcompagnieaeriennes = $paginator->paginate(
+                
+                $compagnieaeriennes,
+                
+        $request->query->getInt('page', 1),
+                // Items per page
+                2
+            );
 
         return $this->render('compagnieaerienne/index.html.twig', [
-            'compagnieaeriennes' => $compagnieaeriennes,
+            'compagnieaeriennes' => $allcompagnieaeriennes,
         ]);
     }
+
+
+    
 
     /**
      * @Route("/new", name="app_compagnieaerienne_new", methods={"GET", "POST"})

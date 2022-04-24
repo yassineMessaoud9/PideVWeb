@@ -9,8 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Avion
  *
  * @ORM\Table(name="avion")
- * @ORM\Entity
+ * @ORM\Entity (repositoryClass="App\Repository\AvionRepository")
  */
+
 class Avion
 {
     /**
