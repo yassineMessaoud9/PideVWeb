@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Knp\Component\Pager\PaginatorInterface;
 /**
  * @Route("/agencelocation")
  */
@@ -18,14 +18,23 @@ class AgencelocationController extends AbstractController
     /**
      * @Route("/", name="app_agencelocation_index", methods={"GET"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager,PaginatorInterface $paginator, Request $request): Response
     {
         $agencelocations = $entityManager
             ->getRepository(Agencelocation::class)
             ->findAll();
+                // Paginate the results of the query
+          $allagencelocations = $paginator->paginate(
+            // Doctrine Query, not results
+            $agencelocations,
+            // Define the page parameter
+    $request->query->getInt('page', 1),
+            // Items per page
+            3
+        );
 
         return $this->render('agencelocation/index.html.twig', [
-            'agencelocations' => $agencelocations,
+            'agencelocations' => $allagencelocations,
         ]);
     }
 
@@ -93,4 +102,29 @@ class AgencelocationController extends AbstractController
 
         return $this->redirectToRoute('app_agencelocation_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/", name="app_agence_recherche", methods={"POST"})
+     */
+    public function rechercher(Request $request)
+    {
+        $em = $this-> getDoctrine()->getManager();
+        $agence=$em->getRepository(Agencelocation::class)->findall();
+      
+        if( $request->isMethod("POST"))
+        {
+            $nomagence =$request->get('nomagence');
+            $agence =$em->getRepository("App:Agencelocation")->findBy(array('nomagence'=>$nomagence),array('addressagence' => 'ASC'));
+
+
+        }
+        return $this->render('agencelocation/index.html.twig', [
+            'agencelocations' => $agence,
+        ]);
+    }
 }
+
+
+
+
+

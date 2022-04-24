@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Voiture
  *
  * @ORM\Table(name="voiture", indexes={@ORM\Index(name="fk_Agencee", columns={"idAgence"})})
- * @ORM\Entity
+* @ORM\Entity (repositoryClass="App\Repository\VoitureRepository")
  */
 class Voiture
 {
@@ -36,14 +36,14 @@ class Voiture
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="marque  doit etre non vide")
      * @ORM\Column(name="marqueVoiture", type="string", length=50, nullable=false)
      */
     private $marquevoiture;
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="photo  doit etre non vide")
      * @ORM\Column(name="photoVoiture", type="string", length=50, nullable=false)
      */
     private $photovoiture;
@@ -167,9 +167,14 @@ class Voiture
 
         return $this;
     }
+    // public function __toString()
+    // {
+    //     return $this->getIdagence();
+
+    // }
     public function __toString()
     {
-        return $this->getIdagence();
+        return $this->marquevoiture;
 
     }
 

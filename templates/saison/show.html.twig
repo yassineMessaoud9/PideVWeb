@@ -3,9 +3,18 @@
 {% block title %}Saison{% endblock %}
 
 {% block body %}
-    <h1>Saison</h1>
+    
 
-    <table class="table">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0"> Saison  </h3>
+			   
+              
+            </div>
+    <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+     
+             
         <tbody>
             <tr>
                 <th>Idsaison</th>
@@ -16,11 +25,17 @@
                 <td>{{ saison.nomsaison }}</td>
             </tr>
         </tbody>
-    </table>
+       </table>
+            </div>
+         
+</div>    
 
-    <a href="{{ path('app_saison_index') }}">back to list</a>
-
-    <a href="{{ path('app_saison_edit', {'idsaison': saison.idsaison}) }}">edit</a>
-
+    
     {{ include('saison/_delete_form.html.twig') }}
+<a href="{{ path('app_saison_index') }}" class="btn btn-outline-primary btn-lg btn-block " style="margin-top:1% " role="button" aria-pressed="true">back to list</a>
+
+
+
+
+
 {% endblock %}

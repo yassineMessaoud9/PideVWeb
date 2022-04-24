@@ -3,11 +3,21 @@
 {% block title %}Edit Agencelocation{% endblock %}
 
 {% block body %}
-    <h1>Edit Agencelocation</h1>
+      <div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+        <div class="col">
+    <h1 style="margin-top: 5%">Edit Agence location</h1>
 
     {{ include('agencelocation/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_agencelocation_index') }}">back to list</a>
+  
 
-    {{ include('agencelocation/_delete_form.html.twig') }}
+<a href="{{ path('app_agencelocation_index') }}" class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true">back to list</a>
+
+    
+
+       </div> </div>
+   
+
+
 {% endblock %}
+

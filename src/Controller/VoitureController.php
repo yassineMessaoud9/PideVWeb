@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Voitureee;
-use App\Form\VoitureType;
+use App\Entity\Voiture;
+use App\Form\voitureType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/voiture")
@@ -22,7 +23,7 @@ class VoitureController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         $voitures = $entityManager
-            ->getRepository(Voitureee::class)
+            ->getRepository(voiture::class)
             ->findAll();
 
         return $this->render('voiture/index.html.twig', [
@@ -31,12 +32,12 @@ class VoitureController extends AbstractController
     }
 
     /**
-     * @Route("/test", name="app_voiture_indexFront", methods={"GET"})
+     * @Route("/list", name="app_voiture_indexFront", methods={"GET"})
      */
     public function indexFront(EntityManagerInterface $entityManager): Response
     {
         $voitures = $entityManager
-            ->getRepository(Voitureee::class)
+            ->getRepository(voiture::class)
             ->findAll();
 
         return $this->render('voiture/indexFront.html.twig', [
@@ -49,8 +50,8 @@ class VoitureController extends AbstractController
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $voiture = new Voitureee();
-        $form = $this->createForm(VoitureType::class, $voiture);
+        $voiture = new voiture();
+        $form = $this->createForm(voitureType::class, $voiture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -66,10 +67,46 @@ class VoitureController extends AbstractController
         ]);
     }
 
+/**
+     * @Route ("/pdf" , name="print")
+     */
+    public function Print(EntityManagerInterface $entityManager):Response
+    {
+        $pdfoptions=new Options();
+
+        $pdfoptions->set('defaultFont','Arial');
+        $pdfoptions->setIsRemoteEnabled(true);
+        $pdfoptions->set('isHtml5ParserEnabled',true);
+        $pdfoptions->set('isRemoteEnabled',true);
+        $dompdf= new Dompdf($pdfoptions);
+        $voiture = $entityManager
+            ->getRepository(voiture::class)
+            ->findAll();
+        $html=$this->renderView('voiture/pdf.html.twig',[
+            'voitures' => $voiture
+
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4','portrait');
+
+        $dompdf->render();
+        //$dompdf->stream("yassinepdf.pdf", ["Attachment"=>true]);
+        $dompdf->stream("asmapdf.pdf", ["Attachment"=>false]);
+
+    }
+
+
+
+
+
+
+
+
     /**
      * @Route("/{idVoiture}", name="app_voiture_show", methods={"GET"},requirements={"id":"\d+"})
      */
-    public function show(Voitureee $voiture): Response
+    public function show(voiture $voiture): Response
     {
         return $this->render('voiture/show.html.twig', [
             'voiture' => $voiture,
@@ -79,9 +116,9 @@ class VoitureController extends AbstractController
     /**
      * @Route("/{idVoiture}/edit", name="app_voiture_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Voitureee $voiture, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, voiture $voiture, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(VoitureType::class, $voiture);
+        $form = $this->createForm(voitureType::class, $voiture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -99,7 +136,7 @@ class VoitureController extends AbstractController
     /**
      * @Route("/{idVoiture}", name="app_voiture_delete", methods={"POST"})
      */
-    public function delete(Request $request, Voitureee $voiture, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, voiture $voiture, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$voiture->getIdVoiture(), $request->request->get('_token'))) {
             $entityManager->remove($voiture);

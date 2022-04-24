@@ -3,9 +3,26 @@
 {% block title %}New Agencelocation{% endblock %}
 
 {% block body %}
-    <h1>Create new Agencelocation</h1>
+    <div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+        <div class="col">
+        {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+        
+  <h1 style="margin-top: 5%">Create new Agence</h1>
 
     {{ include('agencelocation/_form.html.twig') }}
+    {{ form_widget(form.nomagence,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.nomagence,{'attr':{'class':'text-danger'}}) }}
+    
+    {{ form_widget(form.contactagence,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.contactagence,{'attr':{'class':'text-danger'}}) }}
 
-    <a href="{{ path('app_agencelocation_index') }}">back to list</a>
+    }}
+
+         {{ form_end(form) }}
+
+
+
+<a href="{{ path('app_agencelocation_index') }}" class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true">back to list</a>
+
 {% endblock %}
+

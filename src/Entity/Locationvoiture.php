@@ -5,11 +5,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
+
 /**
  * Locationvoiture
  *
- * @ORM\Table(name="locationvoiture", indexes={@ORM\Index(name="matricule", columns={"matricule"}), @ORM\Index(name="fk_User", columns={"idU"}), @ORM\Index(name="fk_sais", columns={"id_saison"})})
- * @ORM\Entity
+ * @ORM\Table(name="locationvoiture", indexes={@ORM\Index(name="matricule", columns={"id_voiture"}), @ORM\Index(name="fk_User", columns={"idU"}), @ORM\Index(name="fk_sais", columns={"id_saison"})})
+ * @ORM\Entity (repositoryClass="App\Repository\LocationvoitureRepository")
+ * 
  */
 class Locationvoiture
 {
@@ -24,13 +27,21 @@ class Locationvoiture
 
     /**
      * @var \DateTime
-     *
+     * @Assert\GreaterThan(
+     *     value="0 days",
+     *     message="today's date or more"
+     * )
      * @ORM\Column(name="datedebutLocation", type="date", nullable=false)
      */
     private $datedebutlocation;
 
     /**
      * @var \DateTime
+     * @Assert\GreaterThan(
+     *     value="0 days",
+     *     message="today's date or more"
+     * )
+   
      *
      * @ORM\Column(name="datefinLocation", type="date", nullable=false)
      */
@@ -38,15 +49,14 @@ class Locationvoiture
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="dateLocation", type="datetime", nullable=false)
      */
     private $datelocation;
 
     /**
      * @var float
-     *
-     * @ORM\Column(name="montant", type="float", precision=10, scale=0, nullable=false)
+ 
+     * @ORM\Column(name="montant", type="float", nullable=false)
      */
     private $montant;
 
@@ -71,14 +81,14 @@ class Locationvoiture
     private $idu;
 
     /**
-     * @var \Voitureee
+     * @var \Voiture
      *
-     * @ORM\ManyToOne(targetEntity="Voitureee")
+     * @ORM\ManyToOne(targetEntity="Voiture")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="matricule", referencedColumnName="matricule")
+     *   @ORM\JoinColumn(name="matricule", referencedColumnName="id_voiture")
      * })
      */
-    private $matricule;
+    private $id_voiture;
 
     public function getIdlocation(): ?int
     {
@@ -122,7 +132,7 @@ class Locationvoiture
     }
 
     public function getMontant(): ?float
-    {
+    { 
         return $this->montant;
     }
 
@@ -157,20 +167,24 @@ class Locationvoiture
         return $this;
     }
 
-    public function getMatricule(): ?Voitureee
+    public function getIdVoiture(): ?Voiture
     {
-        return $this->matricule;
+        return $this->id_voiture;
     }
-
-    public function setMatricule(?Voitureee $matricule): self
+    
+    public function setIdVoiture(?Voiture $idVoiture): self
     {
-        $this->matricule = $matricule;
+        $this->id_voiture = $idVoiture;
 
         return $this;
     }
+
+    
+
+    
     public function __toString()
     {
-        return $this->getIdSaison();
+        return $this->montant;
 
     }
 

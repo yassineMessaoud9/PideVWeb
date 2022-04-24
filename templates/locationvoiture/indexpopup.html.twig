@@ -38,7 +38,33 @@
   {% endblock %}
 
 
-{% block body %}
+<style>
+.body {
+   
+  {# background-image: url('https://rgvgo360.com/usertours/realestate/9218/app-files/tiles/hotspot/1-r0011803/hotspot_3.jpg'); #}
+   background-image: url('https://cdn.dribbble.com/users/992181/screenshots/5522838/cars_dribbble.gif');
+background-repeat: no-repeat;
+   background-attachment: fixed; 
+   background-size: 70%;
+    background-position: center center;
+
+
+
+ 
+}
+.footer {
+     
+  position:fixed;
+    bottom:0;
+    width:100%;
+    height:1%;}
+
+    .overlay img { 
+    display: block; 
+    width: 100%;
+    heigth: 100%;
+}
+</style><div class="bg-white">
 <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-default">
     <div class="container">
         <a class="navbar-brand" href="#">Location Voiture</a>
@@ -93,84 +119,12 @@
     </div>
  
 </nav>
+<body class="body bg-white">
+<h1 class="display-1"style="text-align:center;margin-top:5%">Félicitation!</h1>
+<h3 class="display-5" style="text-align:center">Vous avez louez la voiture <a style="color: green;"> {{marque}} </a> pendant   <a style="color: green;">{{days}} </a> jours. Le montant à payer est: <a style="color: green;"> {{montant}}  </a> DT </h3>
+</body>
 
-<div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
-        <div class="col">
-    <h1 style="margin:2%">Create new Locationvoiture</h1>
+<a   class="btn btn-success "href="{{ path('printfacture',{'idlocation': idlocation}) }}">print new</a>
+{# <a href="{{ path('app_voiture_index') }}" class="btn btn-secondary btn-lg btn-block " style="margin-top:10% " role="button" aria-pressed="true">back to list</a> #}
 
-{{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
-
-
-
-    {# {{ include('locationvoiture/_form.html.twig') }} #}
-
-
-   {{ form_start(form) }}
-    {{ form_widget(form) }}
-
-
-
-  <button  class="btn btn-success btn-lg  btn-block !important" >{{ button_label|default('Save') }}</button>
-
-   
-
-
-
-
-
-
-
-
-
-  
-{{ form_end(form) }}
-    {{ form_widget(form.montant,{'attr':{'class':'form-control'}}) }}
-    {{ form_errors(form.montant,{'attr':{'class':'text-danger'}}) }}
-  {# <a class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true"  onclick="redirect_to_checkout()">save</a> #}
-    {# <button  class="btn btn-success btn-lg  btn-block !important" onclick="redirect_to_checkout()">{{ button_label|default('Save') }}</button> #}
-{{ form_end(form) }}
-
-    <a href="{{ path('app_voiture_indexFront') }}"  class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true">back to list</a>
-        </div>  </div>
-
-{% endblock %}
-<script>
-        $(document).ready(function () {
-            $("#date_picker_arrivee").datepicker({
-                minDate: 0
-            });
-        });
-        $(document).ready(function () {
-            $("#date_picker_depart").datepicker({
-                minDate: 0
-            });
-        });
-        total_html=document.getElementById("total_value");
-        days_html=document.getElementById("days");
-        date_arrive_string=total_html.dataset.arrive;
-        date_depart_string=total_html.dataset.depart;
-        date_arrive=new Date(total_html.dataset.arrive);
-        date_depart=new Date(total_html.dataset.depart);
-        prix_chambre=parseFloat(document.getElementById("total_value").dataset.prix);
-        difference = date_depart.getTime() - date_arrive.getTime();
-        days = Math.ceil(difference / (1000 * 3600 * 24));
-        total=prix_chambre*days;
-        let dollarUSLocale = Intl.NumberFormat('en-US');
-        currency_total=new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"}).format(total);
-        total_html.innerText=currency_total.toString();
-        days_html.innerText=days+" days"
-        console.log('date_arrive '+currency_total);
-        function redirect_to_checkout(id_user,id_room){
-            window.location.href = "http://127.0.0.1:8000/transaction/hotel/"+id_room+"/"+id_user+"/"+total+"/"+date_arrive_string+"/"+date_depart_string;
-        }
-
-    </script>
-<script>
-    $(document).ready(function() {
-        // you may need to change this code if you are not using Bootstrap Datepicker
-        $('.js-datepicker').datepicker({
-            format: 'yyyy-mm-dd'
-        });
-    });
-</script>
- 
+      </div>

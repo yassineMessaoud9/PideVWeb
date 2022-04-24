@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voitureee index{% endblock %}
+
+{% block body %}
+    <h1>Voitureee index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Matricule</th>
+                <th>IdVoiture</th>
+                <th>Marquevoiture</th>
+                <th>Photovoiture</th>
+                <th>Nbplace</th>
+                <th>Nbrchevaux</th>
+                <th>Tarif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voitureee in voitureees %}
+            <tr>
+                <td>{{ voitureee.matricule }}</td>
+                <td>{{ voitureee.idVoiture }}</td>
+                <td>{{ voitureee.marquevoiture }}</td>
+                <td>{{ voitureee.photovoiture }}</td>
+                <td>{{ voitureee.nbplace }}</td>
+                <td>{{ voitureee.nbrchevaux }}</td>
+                <td>{{ voitureee.tarif }}</td>
+                <td>
+                    <a href="{{ path('app_voitureee_show', {'matricule': voitureee.matricule}) }}">show</a>
+                    <a href="{{ path('app_voitureee_edit', {'matricule': voitureee.matricule}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_voitureee_new') }}">Create new</a>
+{% endblock %}

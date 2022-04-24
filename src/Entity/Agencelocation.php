@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Agencelocation
@@ -23,6 +24,12 @@ class Agencelocation
 
     /**
      * @var string
+      *  @Assert\NotBlank(message=" nom doit etre non vide")
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage=" Entrer un nom d'agence au mini de 5 caracteres"
+     *
+     *     )
      *
      * @ORM\Column(name="nomAgence", type="string", length=50, nullable=false)
      */
@@ -30,14 +37,20 @@ class Agencelocation
 
     /**
      * @var int
-     *
+     *  @Assert\NotBlank(message="Contact  doit etre non vide")
+     * @Assert\Range(min=10000000, max=99999999,minMessage="sup a 8 chiffre")
      * @ORM\Column(name="contactAgence", type="integer", nullable=false)
      */
     private $contactagence;
 
     /**
      * @var string
+     * @Assert\NotBlank(message=" nom doit etre non vide")
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage=" Entrer un nom d'agence au mini de 5 caracteres"
      *
+     *     )
      * @ORM\Column(name="addressAgence", type="string", length=50, nullable=false)
      */
     private $addressagence;

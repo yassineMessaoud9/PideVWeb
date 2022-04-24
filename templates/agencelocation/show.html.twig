@@ -3,14 +3,20 @@
 {% block title %}Agencelocation{% endblock %}
 
 {% block body %}
-    <h1>Agencelocation</h1>
+   
 
-    <table class="table">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0"> Agence de location  </h3>
+			   
+              
+            </div>
+    <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+     
+             
         <tbody>
-            <tr>
-                <th>Idagence</th>
-                <td>{{ agencelocation.idagence }}</td>
-            </tr>
+          
             <tr>
                 <th>Nomagence</th>
                 <td>{{ agencelocation.nomagence }}</td>
@@ -27,12 +33,19 @@
                 <th>Logoagence</th>
                 <td>{{ agencelocation.logoagence }}</td>
             </tr>
-        </tbody>
-    </table>
+       </tbody>
+       </table>
+            </div>
+         
+</div>  
 
-    <a href="{{ path('app_agencelocation_index') }}">back to list</a>
-
-    <a href="{{ path('app_agencelocation_edit', {'idagence': agencelocation.idagence}) }}">edit</a>
 
     {{ include('agencelocation/_delete_form.html.twig') }}
+
+<a href="{{ path('app_agencelocation_index') }}" class="btn btn-outline-primary btn-lg btn-block " style="margin-top:1% " role="button" aria-pressed="true">back to list</a>
+
+
+
+ 
+
 {% endblock %}

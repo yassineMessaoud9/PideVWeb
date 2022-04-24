@@ -12,11 +12,13 @@
           <div class="card shadow">
             <div class="card-header border-0">
               <h3 class="mb-0">Table des voitures </h3>
-			    <a class="btn btn-sm btn-primary " style="width: 14%; margin-left: 85%; margin-top: -3%" href="{{ path('app_voiture_new') }}">
+                 <a   class="btn btn-success "href="{{ path('print') }}">print new</a>
+			       <a class="btn btn-sm btn-primary " style="width: 14%; margin-left: 85%; margin-top: -3%" href="{{ path('app_voiture_new') }}">
               
                   + Ajouter une voiture
                 </a>
             </div>
+                 
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
@@ -33,7 +35,7 @@
                 </thead>
                 <tbody>
                  {% for voiture in voitures %}
-				  <tr>
+				     <tr>
                     <th scope="row">
                       <div class="media align-items-center">
                        

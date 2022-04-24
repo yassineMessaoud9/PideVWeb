@@ -3,32 +3,39 @@
 {% block title %}Locationvoiture index{% endblock %}
 
 {% block body %}
-    <h1>Locationvoiture index</h1>
-
+ 
+<div class="row">
+        <div class="col">
+		
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">Table des voitures </h3>
+			   
+            </div>
     <table class="table">
-        <thead>
+        <thead class="thead-light">
             <tr>
-                <th>Idlocation</th>
+                
                 <th>Datedebutlocation</th>
                 <th>Datefinlocation</th>
                 <th>Datelocation</th>
                 <th>Montant</th>
-                <th>actions</th>
+                <th>Nom </th>
+                <th>Marque voiture  </th>
+                 
             </tr>
         </thead>
         <tbody>
         {% for locationvoiture in locationvoitures %}
             <tr>
-                <td>{{ locationvoiture.idlocation }}</td>
+          
                 <td>{{ locationvoiture.datedebutlocation ? locationvoiture.datedebutlocation|date('Y-m-d') : '' }}</td>
                 <td>{{ locationvoiture.datefinlocation ? locationvoiture.datefinlocation|date('Y-m-d') : '' }}</td>
                 <td>{{ locationvoiture.datelocation ? locationvoiture.datelocation|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ locationvoiture.montant }}</td>
                  <td>{{ locationvoiture.idu.nom }}</td>
-                <td>
-                    <a href="{{ path('app_locationvoiture_show', {'idlocation': locationvoiture.idlocation}) }}">show</a>
-                    <a href="{{ path('app_locationvoiture_edit', {'idlocation': locationvoiture.idlocation}) }}">edit</a>
-                </td>
+                 <td>{{ locationvoiture.idVoiture.marquevoiture }}</td>  
+               
             </tr>
         {% else %}
             <tr>
@@ -37,6 +44,8 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_locationvoiture_new') }}">Create new</a>
+ </div>
+          
+          </div>
+        </div>
 {% endblock %}

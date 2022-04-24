@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Voitureee
@@ -30,14 +31,14 @@ class Voitureee
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="marque  doit etre non vide")
      * @ORM\Column(name="marqueVoiture", type="string", length=50, nullable=false)
      */
     private $marquevoiture;
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="lien  doit etre non vide")
      * @ORM\Column(name="photoVoiture", type="string", length=250, nullable=false)
      */
     private $photovoiture;
@@ -163,8 +164,8 @@ class Voitureee
     }
     public function __toString()
     {
-        return $this->getMarquevoiture();
+        return $this->marquevoiture;
 
     }
-
+  
 }

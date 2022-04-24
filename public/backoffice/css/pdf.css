@@ -1,0 +1,33 @@
+body {
+    background: #ccc;
+    padding: 30px;
+  }
+  
+  .container {
+    width: 21cm;
+    min-height: 29.7cm;
+  }
+  
+  .invoice {
+    background: #fff;
+    width: 100%;
+    padding: 50px;
+  }
+  
+  .logo {
+    width: 2.5cm;
+  }
+  
+  .document-type {
+    text-align: right;
+    color: #444;
+  }
+  
+  .conditions {
+    font-size: 0.7em;
+    color: #666;
+  }
+  
+  .bottom-page {
+    font-size: 0.7em;
+  }

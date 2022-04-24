@@ -3,11 +3,19 @@
 {% block title %}Edit Saison{% endblock %}
 
 {% block body %}
-    <h1>Edit Saison</h1>
+   <div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+        <div class="col">
+    <h1 style="margin-top: 5%">Edit Saison</h1>
 
     {{ include('saison/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_saison_index') }}">back to list</a>
 
-    {{ include('saison/_delete_form.html.twig') }}
+<a href="{{ path('app_saison_index') }}" class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true">back to list</a>
+
+    
+
+       </div> </div>
+   
+
+    
 {% endblock %}
