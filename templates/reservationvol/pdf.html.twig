@@ -120,8 +120,8 @@
                             </td>
                             
                             <td>
-                                Invoice #: 123<br>
-                                Created: November 10, 2021<br>
+                                TripToDo<br>
+                                26 Avril 2022<br>
                             </td>
                         </tr>
                     </table>
@@ -132,16 +132,16 @@
                 <td colspan="2">
                     <table>
                         <tr>
-                            <td>
-                                Sugar Camp Inc.<br>
-                                XYZ Address<br>
-                                City, CA 12345
+                            <td style="text-decoration: underline;">
+                                Facture de reservation<br>
+                               <br>
+                                
                             </td>
                             
                             <td>
-                                SugarCamp<br>
-                                NAME<br>
-                                email@example.com
+                                <br>
+                                fitouri omar <br>  numero de vol : {{vol}}
+                                
                             </td>
                         </tr>
                     </table>
@@ -150,61 +150,53 @@
             
             <tr class="heading">
                 <td>
-                    Payment Method
+                    Destination
                 </td>
                 
                 <td>
-                    Check #
+                    nombre de jour du voyage 
                 </td>
             </tr>
             
             <tr class="details">
                 <td>
-                    Check
+                    {{destination}}
                 </td>
                 
                 <td>
-                    1000
+                   {{nbrjours}}
                 </td>
             </tr>
             
             <tr class="heading">
                 <td>
-                    Item
+                    date aller 
                 </td>
                 
                 <td>
-                    Price
+                    date retour
                 </td>
             </tr>
             
             <tr class="item">
                 <td>
-                    Item 1
+                    {{dateallervol}}  {{tempaller}}
                 </td>
                 
                 <td>
-                    $20.00
+                    {{dateretourvol}}  {{tempretour}} 
                 </td>
             </tr>
             
-            <tr class="item">
-                <td>
-                    Item 2
-                </td>
-                
-                <td>
-                    $15.00
-                </td>
-            </tr>
+           
             
             <tr class="item last">
                 <td>
-                    Item 3
+                    class vol 
                 </td>
                 
                 <td>
-                    $10.00
+                    {{classvol}}
                 </td>
             </tr>
             
@@ -212,7 +204,7 @@
                 <td></td>
                 
                 <td>
-                   Total: $45.00
+                   prix: {{prixvol}} DT
                 </td>
             </tr>
         </table>
