@@ -31,7 +31,6 @@ class Reservationrestaurant
 
     /**
      * @var \DateTime
-      * @Assert\DateTime(format="Y/m/d")
      * @Assert\LessThanOrEqual(
      *     value="0 days",
      *     message="should today's date or less"
@@ -42,7 +41,7 @@ class Reservationrestaurant
 
     /**
      * @var \DateTime
-     * @Assert\DateTime(format="Y/m/d")
+   
      * @Assert\GreaterThan(
      *     value="0 days",
      *     message="today's date or more"

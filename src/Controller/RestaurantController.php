@@ -132,4 +132,23 @@ class RestaurantController extends AbstractController
 
         return $this->redirectToRoute('app_restaurant_index', [], Response::HTTP_SEE_OTHER);
     }
+    /**
+     * @Route("/", name="app_restaul_index4", methods={"POST"})
+     */
+    public function rechercher(Request $request)
+    {
+        $em = $this-> getDoctrine()->getManager();
+        $restaurants=$em->getRepository(restaurant::class)->findall();
+        if( $request->isMethod("POST"))
+        {
+            $nbrtable =$request->get('nbrtable');
+            $restaurants =$em->getRepository("App:restaurant")->findBy(array('nbrtable'=>$nbrtable),array('nomrestau' => 'ASC'));
+
+
+        }
+
+        return $this->render('restaurant/index.html.twig', [
+            'restaurants' => $restaurants,
+        ]);
+    }
 }

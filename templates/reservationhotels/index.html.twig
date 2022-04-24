@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Idreservationhotel</th>
+                
                 <th>Typechambre</th>
                 <th>Nbrnuit</th>
                 <th>Datereservation</th>
@@ -22,7 +22,7 @@
         <tbody>
         {% for reservationhotel in reservationhotels %}
             <tr>
-                <td>{{ reservationhotel.idreservationhotel }}</td>
+             
                 <td>{{ reservationhotel.typechambre }}</td>
                 <td>{{ reservationhotel.nbrnuit }}</td>
                 <td>{{ reservationhotel.datereservation ? reservationhotel.datereservation|date('Y-m-d') : '' }}</td>
@@ -44,4 +44,12 @@
     </table>
 
     <a href="{{ path('app_reservationhotels_new') }}">Create new</a>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
 {% endblock %}

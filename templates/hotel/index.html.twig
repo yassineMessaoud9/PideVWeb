@@ -4,12 +4,16 @@
 
 {% block body %}
     <h1>Hotel index</h1>
+    <form method= "POST">
+    <input  type="text"    class="form-control" name ="etoile">
+     <input  type="submit" class="btn btn-outline-warning" value ="recherche  selon nombre d'etoile et trier selon nom ">
+    </form>
 
     <table class="table">
         <thead class="bg-success"
 >
             <tr>
-                <th>Idhotel</th>
+                
                 <th>Nomhotel</th>
                 <th>Adresse</th>
                 <th>Etoile</th>
@@ -21,7 +25,7 @@
         <tbody>
         {% for hotel in hotels %}
             <tr>
-                <td>{{ hotel.idhotel }}</td>
+               
                 <td>{{ hotel.nomhotel }}</td>
                 <td>{{ hotel.adresse }}</td>
                 <td>{{ hotel.etoile }}</td>
@@ -39,11 +43,21 @@ href="{{ path('app_hotel_show', {'idhotel': hotel.idhotel}) }}">show</a>
             <tr>
                 <td colspan="7">no records found</td>
             </tr>
+                       
         {% endfor %}
+        
+         <div class="navigation">
+      
+         
+            {{ knp_pagination_render(hotels) }}
+        </div>
         </tbody>
     </table>
 
     <a   class="btn btn-success "href="{{ path('app_hotel_new') }}">Create new</a>
+        <a   class="btn btn-success "href="{{ path('print') }}">print new</a>
+
+
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}

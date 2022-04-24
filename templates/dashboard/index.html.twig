@@ -3,5 +3,45 @@
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-aaaa
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: blue;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: purple;
+}
+</style>
+
+<body>
+
+<p><button onclick="myMove()"  class="btn btn-info" style=" margin-left:40%;margin-top:10%">Click Me</button  ></p> 
+
+<div id ="container" style=" margin-left:30%;margin-top:10%">
+  <div id ="animate"></div>
+</div>
+
+<script>
+function myMove() {
+  let id = null;
+  const elem = document.getElementById("animate");   
+  let pos = 0;
+  clearInterval(id);
+  id = setInterval(frame, 0.3);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + "px"; 
+      elem.style.left = pos + "px"; 
+    }
+  }
+}
+</script>
 {% endblock %}

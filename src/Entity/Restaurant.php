@@ -70,7 +70,7 @@ class Restaurant
     /**
      * @var int
      *  @Assert\NotBlank(message="nbr  doit etre non vide")
-     * @Assert\Range(min=10000000, max=99999999)
+     * @Assert\Range(min=10000000, max=99999999,minMessage=" Entrer un num de tel superieur à 8 chiffre")
      * @ORM\Column(name="telephone", type="integer", nullable=false)
      */
     private $telephone;

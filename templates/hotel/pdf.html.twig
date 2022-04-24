@@ -1,0 +1,57 @@
+
+
+{% block title %}  {% endblock %}
+
+{% block body %}
+
+
+
+   <style>
+		/* Les descendants de rang impair sont stylés avec une couleur     */
+		tbody:nth-child(odd)  { background-color : #FFA07A		;}
+		/* Les descendants de rang pair sont stylés avec une autre couleur */
+		tbody:nth-child(even) { background-color : #FFA07A		; }
+		th { background-color : #F08080		; padding:1.2em; }
+		td { padding:0.6em; }
+        logo {
+  width: 1cm;
+  height :1cm;
+}
+	</style>
+    
+
+ <img src="https://media.istockphoto.com/vectors/plane-travel-icon-air-travel-around-the-world-flying-around-the-world-vector-id1258141375?k=20&m=1258141375&s=612x612&w=0&h=g1uXnVP6ENUx0lPhtvPT4jOkIXZOj76Sa3R50KbyNP4=" class="logo" style="width:200px;">
+
+    <table class="table "  >
+        <thead class="bg-success"
+>
+            <tr>
+                
+                <th>  Nomhotel</th>
+                <th>Adresse</th>
+                <th>Etoile</th>
+                <th>Nbrchambre</th>
+
+               
+            </tr>
+        </thead> 
+        <tbody >
+        
+        {% for hotel in hotels %}
+            <tr>
+               
+                <td>  {{ hotel.nomhotel }}</td>
+                <td>{{ hotel.adresse }}</td>
+                <td>{{ hotel.etoile }}</td>
+                <td>{{ hotel.nbrchambre }}</td>
+
+                
+          
+            </tr>
+        {% else %}
+   
+                       
+        {% endfor %}
+     
+
+         {% endblock %}

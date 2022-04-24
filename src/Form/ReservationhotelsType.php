@@ -16,28 +16,10 @@ class ReservationhotelsType extends AbstractType
         $builder
             ->add('typechambre')
             ->add('nbrnuit')
-            ->add('datereservation', DateType::class, [
-                'label' => 'Date de reservation',
-                'widget' => 'single_text',
-                'html5' => false,
-
-                'attr' => ['class' => 'js-datepicker'],
-            ])
+            ->add('datereservation')
             ->add('nbrpersonne')
-            ->add('dateallerreser', DateType::class, [
-                'label' => 'Date de debut reservation',
-                'widget' => 'single_text',
-                'html5' => false,
-
-                'attr' => ['class' => 'js-datepicker'],
-            ])
-            ->add('dateretourreser', DateType::class, [
-                'label' => 'Date de  fin reservation',
-                'widget' => 'single_text',
-                'html5' => false,
-
-                'attr' => ['class' => 'js-datepicker'],
-            ])
+            ->add('dateallerreser')
+            ->add('dateretourreser')
             ->add('idu')
             ->add('idhotel')
         ;

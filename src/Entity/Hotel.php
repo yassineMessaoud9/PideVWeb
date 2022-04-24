@@ -53,7 +53,7 @@ class Hotel
     /**
      * @var int
       * @Assert\NotBlank(message="etoile  doit etre non vide")
-     * @Assert\Range(min=1, max=5)
+     * @Assert\Range(min=1, max=5, minMessage=" Entrer  nbr d'etoile sup a 0 ")
      * @ORM\Column(name="etoile", type="integer", nullable=false)
      */
     private $etoile;
@@ -61,7 +61,7 @@ class Hotel
     /**
      * @var int
      *  @Assert\NotBlank(message="nbr  doit etre non vide")
-     * @Assert\Range(min=1, max=5)
+     * @Assert\Range(min=1, max=5, minMessage=" Entrer un NBR  de chambre sup a 0 ")
 
      * @ORM\Column(name="nbrChambre", type="integer", nullable=false)
      */

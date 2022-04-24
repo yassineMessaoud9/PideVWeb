@@ -9,401 +9,299 @@
 
         {% block stylesheets %}
 
-<link href="{{asset('backoffice/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
-<!-- Custom The0*me files -->
-<link href="{{asset('backoffice/css/style.css')}}" rel="stylesheet" type="text/css" media="all"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--js-->
-<!--icons-css-->
-<link href="{{asset('backoffice/css/font-awesome.css')}}" rel="stylesheet"> 
-<!--Google Fonts-->
-<link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
+
+      <!-- Favicon -->
+  <link href= "{{asset('backoffice/dashboard/img/brand/favicon.png')}}" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{{asset('backoffice/dashboard/js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
+  <link href="{{asset('backoffice/dashboard/js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{{asset('backoffice/dashboard/css/argon-dashboard.css?v=1.1.2')}}" rel="stylesheet" />
+
+
         {% endblock %}
 
         {% block javascripts %}
+        
 
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-<script src="{{asset('backoffice/js/jquery-2.1.1.min.js')}}"></script> 
+  <script src=" {{asset('backoffice/dashboard/js/plugins/jquery/dist/jquery.min.js')}}"></script>
+  <script src=" {{asset('backoffice/dashboard/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <!--   Optional JS   -->
+  <script src="{{asset('backoffice/dashboard/js/plugins/chart.js/dist/Chart.min.js')}}"></script>
+  <script src=" {{asset('backoffice/dashboard/js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
+  <!--   Argon JS   -->
+  <script src="{{asset('backoffice/dashboard/js/argon-dashboard.min.js?v=1.1.2')}}"></script>
+  <script src=" https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "argon-dashboard-free"
+      });
+  </script>
 
-<!--static chart-->
-<script src="{{asset('backoffice/js/Chart.min.js')}}"></script>
-<!--//charts-->
-<!-- geo chart -->
-    <script src="//cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-    <script>window.modernizr || document.write('<script src="lib/modernizr/modernizr-custom.js"><\/script>')</script>
-    <!--<script src="lib/html5shiv/html5shiv.js"></script>-->
-     <!-- Chartinator  -->
-	 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-			<script>
-				$(document).ready(function() {
-					// you may need to change this code if you are not using Bootstrap Datepicker
-					$('.js-datepicker').datepicker({
-						format: 'yyyy-mm-dd'
-					});
-				});
-			</script>
-    <script src="{{asset('backoffice/js/chartinator.js')}}" ></script>
-    <script type="text/javascript">
-        jQuery(function ($) {
 
-            var chart3 = $('#geoChart').chartinator({
-                tableSel: '.geoChart',
-
-                columns: [{role: 'tooltip', type: 'string'}],
-         
-                colIndexes: [2],
-             
-                rows: [
-                    ['China - 2015'],
-                    ['Colombia - 2015'],
-                    ['France - 2015'],
-                    ['Italy - 2015'],
-                    ['Japan - 2015'],
-                    ['Kazakhstan - 2015'],
-                    ['Mexico - 2015'],
-                    ['Poland - 2015'],
-                    ['Russia - 2015'],
-                    ['Spain - 2015'],
-                    ['Tanzania - 2015'],
-                    ['Turkey - 2015']],
-              
-                ignoreCol: [2],
-              
-                chartType: 'GeoChart',
-              
-                chartAspectRatio: 1.5,
-             
-                chartZoom: 1.75,
-             
-                chartOffset: [-12,0],
-             
-                chartOptions: {
-                  
-                    width: null,
-                 
-                    backgroundColor: '#fff',
-                 
-                    datalessRegionColor: '#F5F5F5',
-               
-                    region: 'world',
-                  
-                    resolution: 'countries',
-                 
-                    legend: 'none',
-
-                    colorAxis: {
-                       
-                        colors: ['#679CCA', '#337AB7']
-                    },
-                    tooltip: {
-                     
-                        trigger: 'focus',
-
-                        isHtml: true
-                    }
-                }
-
-               
-            });                       
-        });
-    </script>
-<!--geo chart-->
-
-<!--skycons-icons-->
-<script src="{{asset('backoffice/js/skycons.js')}}"></script>
-<!--//skycons-icons-->
 
   {% endblock %}
-
-  <body>
-  <div class="page-container">	
-   <div class="left-content">
-	   <div class="mother-grid-inner">
-            <!--header start here-->
-				<div class="header-main">
-					<div class="header-left">
-							<div class="logo-name">
-									 <a href="index.html"> <h1>Shoppy</h1> 
-									<!--<img id="logo" src="" alt="Logo"/>--> 
-								  </a> 								
-							</div>
-							<!--search-box-->
-								<div class="search-box">
-									<form>
-										<input type="text" placeholder="Search..." required="">	
-										<input type="submit" value="">					
-									</form>
-								</div><!--//end-search-box-->
-							<div class="clearfix"> </div>
-						 </div>
-						 <div class="header-right">
-							<div class="profile_details_left"><!--notifications of menu start -->
-								<ul class="nofitications-dropdown">
-									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
-										<ul class="dropdown-menu">
-											<li>
-												<div class="notification_header">
-													<h3>You have 3 new messages</h3>
-												</div>
-											</li>
-											<li><a href="#">
-											   <div class="user_img"><img src="images/p4.png" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											</a></li>
-											<li class="odd"><a href="#">
-												<div class="user_img"><img src="images/p2.png" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor </p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											  <div class="clearfix"></div>	
-											</a></li>
-											<li><a href="#">
-											   <div class="user_img"><img src="images/p3.png" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											</a></li>
-											<li>
-												<div class="notification_bottom">
-													<a href="#">See all messages</a>
-												</div> 
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
-										<ul class="dropdown-menu">
-											<li>
-												<div class="notification_header">
-													<h3>You have 3 new notification</h3>
-												</div>
-											</li>
-											<li><a href="#">
-												<div class="user_img"><img src="images/p5.png" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											  <div class="clearfix"></div>	
-											 </a></li>
-											 <li class="odd"><a href="#">
-												<div class="user_img"><img src="images/p6.png" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											 </a></li>
-											 <li><a href="#">
-												<div class="user_img"><img src="images/p7.png" alt=""></div>
-											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
-											   <div class="clearfix"></div>	
-											 </a></li>
-											 <li>
-												<div class="notification_bottom">
-													<a href="#">See all notifications</a>
-												</div> 
-											</li>
-										</ul>
-									</li>	
-									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">9</span></a>
-										<ul class="dropdown-menu">
-											<li>
-												<div class="notification_header">
-													<h3>You have 8 pending task</h3>
-												</div>
-											</li>
-											<li><a href="#">
-												<div class="task-info">
-													<span class="task-desc">Database update</span><span class="percentage">40%</span>
-													<div class="clearfix"></div>	
-												</div>
-												<div class="progress progress-striped active">
-													<div class="bar yellow" style="width:40%;"></div>
-												</div>
-											</a></li>
-											<li><a href="#">
-												<div class="task-info">
-													<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-												   <div class="clearfix"></div>	
-												</div>
-												<div class="progress progress-striped active">
-													 <div class="bar green" style="width:90%;"></div>
-												</div>
-											</a></li>
-											<li><a href="#">
-												<div class="task-info">
-													<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-													<div class="clearfix"></div>	
-												</div>
-											   <div class="progress progress-striped active">
-													 <div class="bar red" style="width: 33%;"></div>
-												</div>
-											</a></li>
-											<li><a href="#">
-												<div class="task-info">
-													<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-												   <div class="clearfix"></div>	
-												</div>
-												<div class="progress progress-striped active">
-													 <div class="bar  blue" style="width: 80%;"></div>
-												</div>
-											</a></li>
-											<li>
-												<div class="notification_bottom">
-													<a href="#">See all pending tasks</a>
-												</div> 
-											</li>
-										</ul>
-									</li>	
-								</ul>
-								<div class="clearfix"> </div>
-							</div>
-							<!--notification menu end -->
-							<div class="profile_details">		
-								<ul>
-									<li class="dropdown profile_details_drop">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-											<div class="profile_img">	
-												<span class="prfil-img"><img src="images/p1.png" alt=""> </span> 
-												<div class="user-name">
-													<p>Malorum</p>
-													<span>Administrator</span>
-												</div>
-												<i class="fa fa-angle-down lnr"></i>
-												<i class="fa fa-angle-up lnr"></i>
-												<div class="clearfix"></div>	
-											</div>	
-										</a>
-										<ul class="dropdown-menu drp-mnu">
-											<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-											<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-											<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-							<div class="clearfix"> </div>				
-						</div>
-				     <div class="clearfix"> </div>	
-				</div>
-<!--heder end here-->
-<!-- script-for sticky-nav -->
-		<script>
-		$(document).ready(function() {
-			 var navoffeset=$(".header-main").offset().top;
-			 $(window).scroll(function(){
-				var scrollpos=$(window).scrollTop(); 
-				if(scrollpos >=navoffeset){
-					$(".header-main").addClass("fixed");
-				}else{
-					$(".header-main").removeClass("fixed");
-				}
-			 });
-			 
-		});
-		</script>
-		<!-- /script-for sticky-nav -->
-		<div class="inner-block">
-      {% block body %}
-        {% endblock %}
-				   <div class="clearfix"> </div>
-
-        </div>
-  <div class="sidebar-menu ">
-		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span> 
-			      <!--<img id="logo" src="" alt="Logo"/>--> 
-			  </a> </div>		  
-		    <div class="menu"  style="background-color: black !important;">
-		      <ul id="menu" >
-		        <li id="menu-home" ><a href="index.html"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
-		        <li><a href="{{path('app_hotel_index')}}"><i class="fa fa-cogs"></i><span>hotels</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		          <ul>
-		            <li><a href="grids.html">Grids</a></li>
-		            <li><a href="portlet.html">Portlets</a></li>		            
-		          </ul>
-		        </li>
-		        <li id="menu-comunicacao" ><a href="{{path('app_restaurant_index')}}"><i class="fa fa-book nav_icon"></i><span>restaurant</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		          <ul id="menu-comunicacao-sub" >
-		            <li id="menu-mensagens" style="width: 120px" ><a href="buttons.html">Buttons</a>		              
-		            </li>
-		            <li id="menu-arquivos" ><a href="typography.html">Typography</a></li>
-		            <li id="menu-arquivos" ><a href="icons.html">Icons</a></li>
-		          </ul>
-		        </li>
-		          <li><a href="maps.html"><i class="fa fa-map-marker"></i><span>Maps</span></a></li>
-		        <li id="menu-academico" ><a href="{{path('app_reservationhotels_index')}}"><i class="fa fa-file-text"></i><span>reservationhotel</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		          <ul id="menu-academico-sub" >
-		          	 <li id="menu-academico-boletim" ><a href="login.html">Login</a></li>
-		            <li id="menu-academico-avaliacoes" ><a href="signup.html">Sign Up</a></li>		           
-		          </ul>
-		        </li>
-		        
-		        <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Charts</span></a></li>
-		        <li><a href="#"><i class="fa fa-envelope"></i><span>Mailbox</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		        	 <ul id="menu-academico-sub" >
-			            <li id="menu-academico-avaliacoes" ><a href="inbox.html">Inbox</a></li>
-			            <li id="menu-academico-boletim" ><a href="inbox-details.html">Compose email</a></li>
-		             </ul>
-		        </li>
-		         <li><a href="#"><i class="fa fa-cog"></i><span>System</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		         	 <ul id="menu-academico-sub" >
-			            <li id="menu-academico-avaliacoes" ><a href="404.html">404</a></li>
-			            <li id="menu-academico-boletim" ><a href="blank.html">Blank</a></li>
-		             </ul>
-		         </li>
-		         <li><a href="{{path('app_reservationrestaurant_index')}}"><i class="fa fa-shopping-cart"></i><span>E-Commerce</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		         	<ul id="menu-academico-sub" >
-			            <li id="menu-academico-avaliacoes" ><a href="product.html">Product</a></li>
-			            <li id="menu-academico-boletim" ><a href="price.html">Price</a></li>
-		             </ul>
-		         </li>
-		      </ul>
-		    </div>
-	 </div>
-	<div class="clearfix"> </div>
-</div>
-<!--slide bar menu end here-->
-<script>
-var toggle = true;
-            
-$(".sidebar-icon").click(function() {                
-  if (toggle)
-  {
-    $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
-    $("#menu span").css({"position":"absolute"});
-  }
-  else
-  {
-    $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
-    setTimeout(function() {
-      $("#menu span").css({"position":"relative"});
-    }, 400);
-  }               
-                toggle = !toggle;
-            });
-</script>
-<!--scrolling js-->
-		<script src="backoffice/js/jquery.nicescroll.js"></script>
-		<script src="backoffice/js/scripts.js"></script>
-		<!--//scrolling js-->
-<script src="backoffice/js/bootstrap.js"> </script>
-<!-- mother grid end here-->
-  </body>
 </head>
+
+<body class="">
+
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      {# <a class="navbar-brand pt-0" href="../index.html">
+        <img src="backoffice/dashboard/img/brand/blue.png" class="navbar-brand-img" alt="...">
+      </a> #}
+      <!-- User -->
+      <ul class="nav align-items-center d-md-none">
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ni ni-bell-55"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="media align-items-center">
+              <span class="avatar avatar-sm rounded-circle">
+                {# <img alt="Image placeholder" src="backoffice/dashboard/img/theme/team-1-800x800.jpg
+"> #}
+              </span>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+            <div class=" dropdown-header noti-title">
+              <h6 class="text-overflow m-0">Welcome!</h6>
+            </div>
+            <a href="../examples/profile.html" class="dropdown-item">
+              <i class="ni ni-single-02"></i>
+              <span>My profile</span>
+            </a>
+            <a href="../examples/profile.html" class="dropdown-item">
+              <i class="ni ni-settings-gear-65"></i>
+              <span>Settings</span>
+            </a>
+            <a href="../examples/profile.html" class="dropdown-item">
+              <i class="ni ni-calendar-grid-58"></i>
+              <span>Activity</span>
+            </a>
+            <a href="../examples/profile.html" class="dropdown-item">
+              <i class="ni ni-support-16"></i>
+              <span>Support</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#!" class="dropdown-item">
+              <i class="ni ni-user-run"></i>
+              <span>Logout</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="../index.html">
+                <img src="backoffice/dashboard/img/brand/blue.png">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Form -->
+        <form class="mt-4 mb-3 d-md-none">
+          <div class="input-group input-group-rounded input-group-merge">
+            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <span class="fa fa-search"></span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- Navigation -->
+        <ul class="navbar-nav">
+          <li class="nav-item  active ">
+            <a class="nav-link " href="{{path('app_hotel_index')}}">
+              <i class="ni ni-tv-2 text-primary"></i> hotel
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{path('app_restaurant_index')}}">
+              <i class="ni ni-planet text-blue"></i>
+         restau
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{path('app_reservationhotels_index')}}">
+              <i class="ni ni-pin-3 text-orange"></i> reservation hotel
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{path('app_reservationrestaurant_index')}}">
+              <i class="ni ni-single-02 text-yellow"></i> reservation restaurant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link   " href="#">
+              <i class="ni ni-bullet-list-67 text-red"></i> Location voiture
+            </a>
+          </li>
+         
+         
+        </ul>
+        
+    
+      </div>
+    </div>
+  </nav>
+  <div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="../index.html">Welcome</a>
+        <!-- Form -->
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+          <div class="form-group mb-0">
+            <div class="input-group input-group-alternative">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input class="form-control" placeholder="Search" type="text">
+            </div>
+          </div>
+        </form>
+        <!-- User -->
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+          <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold">user</span>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+              </div>
+              <a href="../examples/profile.html" class="dropdown-item">
+                <i class="ni ni-single-02"></i>
+                <span>My profile</span>
+              </a>
+              <a href="../examples/profile.html" class="dropdown-item">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>Settings</span>
+              </a>
+              <a href="../examples/profile.html" class="dropdown-item">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>Activity</span>
+              </a>
+              <a href="../examples/profile.html" class="dropdown-item">
+                <i class="ni ni-support-16"></i>
+                <span>Support</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#!" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    
+    
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+        
+        </div>
+      </div>
+    </div>
+<div class="container-fluid mt--7">
+      <!-- Table -->
+  <div class="row">
+        <div class="col">
+     {% block body %}
+     
+        {% endblock %}
+       
+      </div> 
+    </div>
+     
+      
+   
+ 
+  <!--   Core   -->
+  <script src="backoffice/dashboard/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="backoffice/dashboard/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!--   Optional JS   -->
+  <!--   Argon JS   -->
+  <script src="backoffice/dashboard/js/argon-dashboard.min.js?v=1.1.2"></script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "argon-dashboard-free"
+      });
+  </script>
+  
+
+
+      <footer class="footer">
+        <div class="row align-items-center justify-content-xl-between">
+          <div class="col-xl-6">
+            <div class="copyright text-center text-xl-left text-muted">
+              &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+       </div>
+</body>

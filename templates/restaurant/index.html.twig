@@ -4,11 +4,15 @@
 
 {% block body %}
     <h1>Restaurant index</h1>
-
+    <form method= "POST">
+    <input  type="text"    class="form-control" name ="nbrtable">
+     <input  type="submit" class="btn btn-outline-warning" value ="recherche  selon nbr table">
+    </form>
+ 
     <table class="table">
         <thead class="bg-success">
             <tr>
-                <th>Idrestau</th>
+              
                 <th>Nomrestau</th>
                 <th>Typerestau</th>
                 <th>Nbrtable</th>
@@ -21,7 +25,7 @@
         <tbody>
         {% for restaurant in restaurants %}
             <tr>
-                <td>{{ restaurant.idrestau }}</td>
+                
                 <td>{{ restaurant.nomrestau }}</td>
                 <td>{{ restaurant.typerestau }}</td>
                 <td>{{ restaurant.nbrtable }}</td>

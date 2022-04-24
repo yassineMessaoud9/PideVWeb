@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Idreservationrestau</th>
+                
                 <th>Datereservationrestau</th>
                 <th>Datedebutres</th>
                 <th>Datefinres</th>
@@ -18,7 +18,7 @@
         <tbody>
         {% for reservationrestaurant in reservationrestaurants %}
             <tr>
-                <td>{{ reservationrestaurant.idreservationrestau }}</td>
+               
                 <td>{{ reservationrestaurant.datereservationrestau ? reservationrestaurant.datereservationrestau|date('Y-m-d') : '' }}</td>
                 <td>{{ reservationrestaurant.datedebutres ? reservationrestaurant.datedebutres|date('Y-m-d') : '' }}</td>
                 <td>{{ reservationrestaurant.datefinres ? reservationrestaurant.datefinres|date('Y-m-d') : '' }}</td>
@@ -36,4 +36,12 @@
     </table>
 
     <a href="{{ path('app_reservationrestaurant_new') }}">Create new</a>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .table>thead>tr>th{
+            color: white;
+        }
+    </style>
 {% endblock %}
