@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-class LocationvoitureType extends AbstractType
+class LocationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -41,7 +41,7 @@ class LocationvoitureType extends AbstractType
                     )
                 ]
             ])
-            ->add('montant',NumberType::class,array('label'=>'montant' ))
+            // ->add('montant',NumberType::class,array('label'=>'montant' ))
             ->add('idSaison')
             ->add('idu')
             ->add('id_voiture')

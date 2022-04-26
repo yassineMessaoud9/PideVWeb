@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Locationvoiture;
 use App\Entity\Voiture;
 use App\Form\LocationvoitureType;
+use App\Form\LocationType;
 use App\Repository\VoitureRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,7 +43,7 @@ class LocationvoitureController extends AbstractController
     {
         $locationvoiture = new Locationvoiture();
 
-        $form = $this->createForm(LocationvoitureType::class, $locationvoiture);
+        $form = $this->createForm(LocationType::class, $locationvoiture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,7 +66,7 @@ class LocationvoitureController extends AbstractController
               $entityManager->flush();
              $test= ((string)$montant );
              $idlocation =$locationvoiture->getIdlocation();
-             var_dump($idlocation);
+           
           
         
 
@@ -91,7 +92,7 @@ class LocationvoitureController extends AbstractController
 
         $location=$_GET['idlocation'];
        $locationvoitureee= $LocationvoitureRepository->find($location);
-       dd( $locationvoitureee);
+    //    dd( $locationvoitureee);
         $pdfoptions=new Options();
 
         $pdfoptions->set('defaultFont','Arial');
@@ -106,17 +107,23 @@ class LocationvoitureController extends AbstractController
         $locationvoiture = $entityManager
             ->getRepository(locationvoiture::class)
             ->findAll();
-          $Datedebutlocation = $locationvoitureee->getDatedebutlocation();
-          $Datefinlocation = $locationvoitureee->getDatefinlocation();
+          $Datedebutlocation = $locationvoitureee->getDatedebutlocation()->format('d/m/Y');
+          $Datefinlocation = $locationvoitureee->getDatefinlocation()->format('d/m/Y');
           $idVoiture = $locationvoitureee->getIdVoiture();
           $voiture=$voitureRepository->find($idVoiture);
           $marque=$voiture->getMarquevoiture(); 
-          
-
-
+          $montant = $locationvoitureee->getMontant();
+          $Datelocation = $locationvoitureee->getDatelocation()->format('d/m/Y');
+          $tarif=$voiture->getTarif(); 
 
         $html=$this->renderView('locationvoiture/pdf.html.twig',[
-            'locationvoiture' => $locationvoiture
+            'locationvoiture' => $locationvoiture,
+            'Datedebutlocation' =>$Datedebutlocation,
+            'Datefinlocation' => $Datefinlocation,
+            'marque' => $marque,
+            'montant' => $montant,
+            'Datelocation' =>  $Datelocation,
+            'tarif' => $tarif
 
         ]);
 
@@ -181,6 +188,19 @@ class LocationvoitureController extends AbstractController
         return round($dureesejour / (60 * 60 * 24));
 
     }
+    /**
+     * @Route("/trier/list", name="trierM")
+      */
+      public function trierM(LocationvoitureRepository $repository, Request $request)
+      {
+        
+      
+        $f=$repository->tri();
+         
+        return $this->render('locationvoiture/index.html.twig', [
+            'locationvoitures' => $f
+        ]);
+        }
    
     
 }

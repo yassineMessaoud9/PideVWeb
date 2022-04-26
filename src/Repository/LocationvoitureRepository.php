@@ -73,4 +73,11 @@ class LocationvoitureRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function tri()
+    
+    {
+        return $this->createQueryBuilder('m')
+        ->orderBy('m.montant', 'ASC')
+        ->getQuery()->getResult();
+     }
 }

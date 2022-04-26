@@ -4,14 +4,18 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * Agencelocation
  *
  * @ORM\Table(name="agencelocation")
- * @ORM\Entity
+ * @ORM\Entity  (repositoryClass="App\Repository\AgenceLocationRepository")
  */
-class Agencelocation
+class Agencelocation implements UserInterface, \Serializable 
 {
     /**
      * @var int
@@ -118,6 +122,59 @@ class Agencelocation
     {
         return $this->getNomagence();
 
+    }
+    public function serialize()
+    {
+        return serialize([
+          
+            $this->idagence,
+            $this->nomagence,
+            $this->contactagence,
+            $this->addressagence,
+            $this->logoagence,
+        ]);
+    }
+
+    public function unserialize($data)
+    {
+        list(
+            
+            $this->idagence,
+            $this->nomagence,
+            $this->contactagence,
+            $this->addressagence,
+            $this->logoagence,
+        ) = unserialize($data, ['allowed_classes' => false]);
+    }
+
+    public function getSalt()
+    {
+
+    }
+
+    public function getUsername()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles()
+    {
+        return null;
+    }
+/**
+     * @see UserInterface
+     */
+    public function getPassword(): ?string
+    {
+        return null;
     }
 
 }

@@ -10,11 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use App\Repository\AgenceLocationRepository;
+
+
 /**
  * @Route("/agencelocation")
  */
 class AgencelocationController extends AbstractController
 {
+ 
     /**
      * @Route("/", name="app_agencelocation_index", methods={"GET"})
      */
@@ -38,6 +45,7 @@ class AgencelocationController extends AbstractController
         ]);
     }
 
+ 
     /**
      * @Route("/new", name="app_agencelocation_new", methods={"GET", "POST"})
      */
@@ -59,7 +67,19 @@ class AgencelocationController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
+    /**
+     * @Route("/search/{searchString}", name="searchEnt")
+     * @return Response|JsonResponse          Response instance
+     */
+    public function searchEnt($searchString): JsonResponse
+    {
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $repository = $this->getDoctrine()->getRepository(Agencelocation::class);
+        $agences = $repository->findByNomAgence($searchString);
+        $data=$serializer->normalize( $agences);
+        return new JsonResponse($data);
+    }
+    
     /**
      * @Route("/{idagence}", name="app_agencelocation_show", methods={"GET"})
      */
@@ -122,6 +142,8 @@ class AgencelocationController extends AbstractController
             'agencelocations' => $agence,
         ]);
     }
+
+
 }
 
 

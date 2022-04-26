@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Voiture;
 use App\Form\voitureType;
+use App\Repository\VoitureRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -98,6 +99,26 @@ class VoitureController extends AbstractController
 
 
 
+    /**
+     * @Route("/stats",name="stats")
+     */
+    public function statistique(VoitureRepository $VoitureRepository,EntityManagerInterface $entityManager)
+    {
+        $voitures = $entityManager
+        ->getRepository(voiture::class)
+        ->findAll();
+        $marquevoiture= [];
+        $tarif= [];
+        foreach($voitures as $voiture){
+            $marquevoiture[]=$voiture->getMarquevoiture();
+            $tarif[]=$voiture->getTarif();
+        }
+        return $this->render('voiture/stats.html.twig',[
+            'marquevoiture' =>json_encode($marquevoiture),
+            'tarif' =>json_encode($tarif)
+        ]);
+    }
+
 
 
 
@@ -145,7 +166,27 @@ class VoitureController extends AbstractController
 
         return $this->redirectToRoute('app_voiture_index', [], Response::HTTP_SEE_OTHER);
     }
-    
+
+
+    /**
+     * @Route("/", name="app_recherche", methods={"POST"})
+     */
+    public function rechercher(Request $request,VoitureRepository $V)
+    {
+        $em = $this-> getDoctrine()->getManager();
+        $voiture=$em->getRepository(Voiture::class)->findall();
+        if( $request->isMethod("POST"))
+        {
+            $marque =$request->get('marquevoiture');
+            
+
+            $voiture =$V->findEntities($marque);
+        }
+
+        return $this->render('voiture/index.html.twig', [
+            'voitures' => $voiture,
+        ]);
+    }
 
 
 }

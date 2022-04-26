@@ -3,12 +3,12 @@
 {% block title %}Agencelocation index{% endblock %}
 
 {% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-
-<form method= "POST">
-    <input  type="text" name ="nomagence">
-     <input  type="submit" value ="recherche  selon nom d'agence et trier selon nom ">
-    </form>
+    <div class="pcoded-search-box" style="position: relative; left: 70%;width: 20%;">
+            <input onkeyup="searchEnt()" type="text" id="searchEnt" class="form-control" placeholder="Search">
+        </div>
+ 
 
 
 
@@ -25,7 +25,7 @@
             </div>
     <table class="table">
         <thead class="thead-light">
-            <tr>
+            <tr >
            
                 <th>Nomagence</th>
                 <th>Contactagence</th>
@@ -36,7 +36,7 @@
         </thead>
         <tbody>
         {% for agencelocation in agencelocations %}
-            <tr>
+            <tr name="elements" id="{{'membre'~ agencelocation.idagence}}">
              
                 <td>{{ agencelocation.nomagence }}</td>
                 <td>{{ agencelocation.contactagence }}</td>
@@ -97,7 +97,7 @@
     </li>
   </ul>
 </nav> #}
-        <div class="pagination">
+        <div class="pagination" style="margin-left:40%;  position: relative;">
             {{ knp_pagination_render(agencelocations) }}
         </div>
         </tbody>
@@ -109,6 +109,36 @@
           
           </div>
         </div>
+            <script>
+                function searchEnt() {
+                    let searchString = document.getElementById('searchEnt').value; // recuperation de l'input de la recherche
+                     
+                    const elements = document.getElementsByName('elements') //recuperation de la reference du dom (liste des tr)
+                 
+                    if (searchString.length!==0){
+                           console.log("l'input de la recherche",searchString);
+                        $.ajax({
+
+                            url:'search/'+searchString, success: function (data) {
+                                    console.log("data",data);
+                                for (let i = 0; i < elements.length; i++){
+                                    elements[i].style.display = "none";
+
+                                }
+                                for (let j = 0; j < data.length; j++) {
+                                    $('#membre'+data[j].id).show('slow');
+                                  
+                                }
+                            },
+
+                        });
+                    }else{
+                        for (let i = 0; i < elements.length; i++){
+                            elements[i].style.display = "revert";
+                        }
+                    }
+                }
+            </script>
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
@@ -117,4 +147,6 @@
             color: white;
         }
     </style>
+
 {% endblock %}
+

@@ -73,4 +73,15 @@ class VoitureRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findEntities($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT v
+                FROM APP\Entity\Voiture v
+                WHERE v.marquevoiture LIKE :str"
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
 }

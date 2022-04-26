@@ -1,0 +1,75 @@
+
+
+  
+ {% block body %}
+  <a href="{{ path('app_voiture_index') }}" class="btn btn-outline-primary btn-lg btn-block " style="margin-top:1% " role="button" aria-pressed="true">back to list</a>
+ <h1 style="margin-left:45%; color:#89c7d7;"> Statiqtique </h1>
+  <h4 style="margin-left:35%; color:#404d5f;"> Statiqtique representant les marques de voitures selon leur tarifs en DT </h4>
+ <div style="width:40%; margin-left:30%">
+    <canvas id="marquevoiture" width="200" height="200"></canvas>
+</div>
+     
+
+
+
+
+
+{% endblock %} 
+
+
+
+   {% block javascripts %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+
+const ctx = document.getElementById('marquevoiture').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{marquevoiture | raw}},
+        datasets: [{
+            label: '# of Votes',
+            data: {{tarif | raw}},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                 'rgba(255, 200, 64, 0.2)',
+                 'rgba(218,253,179,255)',
+                  'rgba(167,194,213,255)',
+                   
+                    'rgba(167,194,213,255)',
+                     'rgba(167,194,213,255)',
+                     
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                
+                
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+
+  {% endblock %}

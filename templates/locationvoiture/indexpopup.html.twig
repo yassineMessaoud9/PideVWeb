@@ -120,11 +120,14 @@ background-repeat: no-repeat;
  
 </nav>
 <body class="body bg-white">
+
+
 <h1 class="display-1"style="text-align:center;margin-top:5%">Félicitation!</h1>
 <h3 class="display-5" style="text-align:center">Vous avez louez la voiture <a style="color: green;"> {{marque}} </a> pendant   <a style="color: green;">{{days}} </a> jours. Le montant à payer est: <a style="color: green;"> {{montant}}  </a> DT </h3>
 </body>
 
-<a   class="btn btn-success "href="{{ path('printfacture',{'idlocation': idlocation}) }}">print new</a>
+<a   class="btn btn-success  " style="margin-left: 42%;" href="{{ path('printfacture',{'idlocation': idlocation}) }}">Imprimer facture</a>
+  <a href="{{ path('app_voiture_indexFront') }}" class="btn btn-outline-primary  " role="button" aria-pressed="true">back to list</a>
 {# <a href="{{ path('app_voiture_index') }}" class="btn btn-secondary btn-lg btn-block " style="margin-top:10% " role="button" aria-pressed="true">back to list</a> #}
 
       </div>
