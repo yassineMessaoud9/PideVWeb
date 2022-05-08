@@ -120,10 +120,10 @@ class AvionController extends AbstractController
       {
         
       
-        $formations=$repository->tri();
+        $f=$repository->tri();
          
         return $this->render('avion/index.html.twig', [
-            'avions' => $formations
+            'avions' => $f
         ]);
         }
 

@@ -125,7 +125,7 @@ class VolController extends AbstractController
             $datealler =$request->get('datealler');
             $dateretour =$request->get('dateretour');
             
-            $d=new DateTime('2022-03-05');
+            // $d=new DateTime('2022-03-05');
             
 
             $vol =$A->finddate( $datealler, $dateretour);

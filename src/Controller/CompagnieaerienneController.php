@@ -30,7 +30,7 @@ class CompagnieaerienneController extends AbstractController
                 
         $request->query->getInt('page', 1),
                 // Items per page
-                2
+                5
             );
 
         return $this->render('compagnieaerienne/index.html.twig', [

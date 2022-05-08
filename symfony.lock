@@ -307,6 +307,9 @@
     "symfony/security-csrf": {
         "version": "v4.4.37"
     },
+    "symfony/serializer": {
+        "version": "v4.4.41"
+    },
     "symfony/service-contracts": {
         "version": "v2.5.0"
     },
