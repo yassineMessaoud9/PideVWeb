@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="agencelocation")
  * @ORM\Entity  (repositoryClass="App\Repository\AgenceLocationRepository")
  */
-class Agencelocation implements UserInterface, \Serializable 
+class Agencelocation 
 {
     /**
      * @var int
@@ -147,34 +147,8 @@ class Agencelocation implements UserInterface, \Serializable
         ) = unserialize($data, ['allowed_classes' => false]);
     }
 
-    public function getSalt()
-    {
+   
 
-    }
 
-    public function getUsername()
-    {
-        return null;
-    }
-
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getRoles()
-    {
-        return null;
-    }
-/**
-     * @see UserInterface
-     */
-    public function getPassword(): ?string
-    {
-        return null;
-    }
 
 }
