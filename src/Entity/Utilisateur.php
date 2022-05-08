@@ -11,16 +11,19 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class Utilisateur implements UserInterface ,\Serializable
+class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(name="idU",type="integer")
+     * @Groups("act")
+     * @Groups("post:read")
      */
     private $id;
 
@@ -28,55 +31,73 @@ class Utilisateur implements UserInterface ,\Serializable
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(
      * message = "{{ value }} is not a valid email.")
+     * @Groups("act")
+     * @Groups("post:read")
      */
     private $email;
 
     /**
      * @ORM\Column(name="role",type="json")
+     * @Groups("act")
+     * @Groups("post:read")
      */
-    private $roles ;
+    private $roles;
 
     /**
      * @var string The hashed password
      * @ORM\Column(name="motpasse",type="string")
-     * 
+     * @Groups("act")
+     * @Groups("post:read")
+     *
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="please enter your name")
+     * @Groups("act")
+     * @Groups("post:read")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="please enter your prenom")
+     * @Groups("act")
+     * @Groups("post:read")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     * @Groups("act")
+     * @Groups("post:read")
+     *
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     * @Groups("act")
+     * @Groups("post:read")
+     *
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="please enter pays")
+     * @Groups("act")
+     * @Groups("post:read")
      */
     private $pays;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("act")
+     * @Groups("post:read")
      */
-    private $activated='Active';
+    private $activated = 'Active';
 
     public function getId(): ?int
     {
@@ -114,8 +135,7 @@ class Utilisateur implements UserInterface ,\Serializable
     }
     public function __construct($rol)
     {
-        $this->roles = array($rol);
-
+        $this->roles = [$rol];
     }
 
     public function setRoles(array $roles): self
@@ -234,17 +254,30 @@ class Utilisateur implements UserInterface ,\Serializable
 
     public function serialize()
     {
-        return serialize(
-            [
-                $this->id,
-                $this->nom,
-                $this->email,
-                $this->password,
-                $this->pays,
-                $this->activated
-            ]
+        return serialize([
+            $this->id,
+            $this->nom,
+            $this->email,
+            $this->password,
+            $this->pays,
+            $this->activated,
+        ]);
+    }
 
-        );
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+            'prenom' => $this->getPrenom(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
+            'pays' => $this->getPays(), 
+            'activated' => $this->getActivated(),
+            'photo' => $this->getPhoto(),
+            'role' => $this->getRoles(),
+            'adresse' => $this->getAdresse(),
+        ];
     }
 
     public function unserialize($data)
@@ -255,13 +288,11 @@ class Utilisateur implements UserInterface ,\Serializable
             $this->email,
             $this->password,
             $this->tel,
-            $this->stateuser
-
-            )=unserialize($data,['allowed_classes'=>false]);
+            $this->stateuser,
+        ) = unserialize($data, ['allowed_classes' => false]);
     }
     public function __toString()
     {
         return $this->nom;
     }
-
 }

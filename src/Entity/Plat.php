@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Plat
@@ -11,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="plat")
  * @ORM\Entity
  */
-class Plat
+class Plat implements \JsonSerializable
 {
     /**
      * @var int
@@ -19,6 +20,7 @@ class Plat
      * @ORM\Column(name="idPlat", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("post:read")
      */
     private $idplat;
 
@@ -27,6 +29,7 @@ class Plat
      *
      * @ORM\Column(name="nomPlat", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="please enter the plat name")
+     * @Groups("post:read")
      */
     private $nomplat;
 
@@ -39,7 +42,7 @@ class Plat
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
-     * 
+     * @Groups("post:read")
      */
     private $prixplat;
 
@@ -48,6 +51,7 @@ class Plat
      *
      * @ORM\Column(name="photoPlat", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="please enter plat photo")
+     * @Groups("post:read")
      */
     private $photoplat;
 
@@ -56,6 +60,7 @@ class Plat
      *
      * @ORM\Column(name="description", type="string", length=300, nullable=false)
      * @Assert\NotBlank(message="please enter description")
+     * @Groups("post:read")
      */
     private $description;
 
@@ -117,4 +122,12 @@ class Plat
         return $this->nomplat;
     }
 
+    public function jsonSerialize()
+    {
+        return [
+            'idplat' => $this->getIdplat(),
+            'nomplat'=>$this->getNomplat(),
+            'description'=>$this->getDescription()
+        ];
+    }
 }
