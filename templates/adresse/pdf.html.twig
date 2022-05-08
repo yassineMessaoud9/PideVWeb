@@ -1,0 +1,86 @@
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<style>
+		/* Les descendants de rang impair sont stylés avec une couleur     */
+		tbody:nth-child(odd)  { background-color : #CED4E5; }
+		/* Les descendants de rang pair sont stylés avec une autre couleur */
+		tbody:nth-child(even) { background-color : #E8EBF5; }
+		th  { ;background-color : #557CBA; padding:0.7em; }
+		td { padding:0.5em; }
+	</style>
+    <h1></h1>
+
+    
+<div class="row">
+        <div class="col">
+		
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 style="text-align: center; color:blue" class="mb-0">nos adresse </h3>
+			    <a class="btn btn-sm btn-primary " style="width: 14%; margin-left: 85%; margin-top: -3%" href="{{ path('app_adresse_new') }}">
+              
+                  
+                </a>
+            </div>
+            <div class="table-responsive">
+              <table  style="text-align: center; !important"class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th  scope="col">paysadresse</th>
+                    <th scope="col">rueadresse</th>
+                    <th scope="col">contact</th>
+                    
+                    
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                 {% for adresse in adresses %}
+				  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                     
+                       
+                        <div class="media-body">
+                          <span class="mb-0 text-sm align-items-center" >{{ adresse.paysadresse }}</span>
+                        </div>
+                      </div>
+                    </th>
+                 
+                    <td>
+                      <span class="badge badge-dot mr-4" style="text-align: center !important">
+                        {{ adresse.rueadresse }}
+                      </span>
+                    </td>
+                     <td>
+                      <span class="badge badge-dot mr-4" style="text-align: center !important">
+                         {{ adresse.contactadresse }}
+                      </span>
+                    </td>
+                 
+                    
+        
+                     
+                    
+                        
+</div>
+                
+</div>
+</div>
+</div>
+</div>
+ </tr>
+                    {% else %}
+            
+        {% endfor %}           
+                </tbody>
+              </table>
+             
+            </div>
+          
+          </div>
+        </div>
+</div>
+ {% endblock %}

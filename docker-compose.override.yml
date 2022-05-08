@@ -6,9 +6,12 @@ services:
     ports:
       - "5432"
 ###< doctrine/doctrine-bundle ###
+<<<<<<< HEAD
 
 ###> symfony/mailer ###
   mailer:
     image: schickling/mailcatcher
     ports: [1025, 1080]
 ###< symfony/mailer ###
+=======
+>>>>>>> origin/omarfitouri

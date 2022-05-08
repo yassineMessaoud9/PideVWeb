@@ -3,8 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+=======
+>>>>>>> origin/omarfitouri
 
 /**
  * Plat
@@ -12,7 +15,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="plat")
  * @ORM\Entity
  */
+<<<<<<< HEAD
 class Plat implements \JsonSerializable
+=======
+class Plat
+>>>>>>> origin/omarfitouri
 {
     /**
      * @var int
@@ -20,11 +27,15 @@ class Plat implements \JsonSerializable
      * @ORM\Column(name="idPlat", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+<<<<<<< HEAD
      * @Groups("post:read")
+=======
+>>>>>>> origin/omarfitouri
      */
     private $idplat;
 
     /**
+<<<<<<< HEAD
      * @var string
      *
      * @ORM\Column(name="nomPlat", type="string", length=255, nullable=false)
@@ -43,19 +54,29 @@ class Plat implements \JsonSerializable
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      * @Groups("post:read")
+=======
+     * @var float
+     *
+     * @ORM\Column(name="prixPlat", type="float", precision=10, scale=0, nullable=false)
+>>>>>>> origin/omarfitouri
      */
     private $prixplat;
 
     /**
      * @var string
      *
+<<<<<<< HEAD
      * @ORM\Column(name="photoPlat", type="string", length=255, nullable=false)
      * @Assert\NotBlank(message="please enter plat photo")
      * @Groups("post:read")
+=======
+     * @ORM\Column(name="photoPlat", type="string", length=300, nullable=false)
+>>>>>>> origin/omarfitouri
      */
     private $photoplat;
 
     /**
+<<<<<<< HEAD
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=300, nullable=false)
@@ -63,12 +84,20 @@ class Plat implements \JsonSerializable
      * @Groups("post:read")
      */
     private $description;
+=======
+     * @var int
+     *
+     * @ORM\Column(name="numRestaurant", type="integer", nullable=false)
+     */
+    private $numrestaurant;
+>>>>>>> origin/omarfitouri
 
     public function getIdplat(): ?int
     {
         return $this->idplat;
     }
 
+<<<<<<< HEAD
     public function getNomplat(): ?string
     {
         return $this->nomplat;
@@ -81,6 +110,8 @@ class Plat implements \JsonSerializable
         return $this;
     }
 
+=======
+>>>>>>> origin/omarfitouri
     public function getPrixplat(): ?float
     {
         return $this->prixplat;
@@ -93,18 +124,27 @@ class Plat implements \JsonSerializable
         return $this;
     }
 
+<<<<<<< HEAD
     public function getPhotoplat() 
+=======
+    public function getPhotoplat(): ?string
+>>>>>>> origin/omarfitouri
     {
         return $this->photoplat;
     }
 
+<<<<<<< HEAD
     public function setPhotoplat($photoplat)
+=======
+    public function setPhotoplat(string $photoplat): self
+>>>>>>> origin/omarfitouri
     {
         $this->photoplat = $photoplat;
 
         return $this;
     }
 
+<<<<<<< HEAD
     public function getDescription(): ?string
     {
         return $this->description;
@@ -113,10 +153,21 @@ class Plat implements \JsonSerializable
     public function setDescription(string $description): self
     {
         $this->description = $description;
+=======
+    public function getNumrestaurant(): ?int
+    {
+        return $this->numrestaurant;
+    }
+
+    public function setNumrestaurant(int $numrestaurant): self
+    {
+        $this->numrestaurant = $numrestaurant;
+>>>>>>> origin/omarfitouri
 
         return $this;
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->nomplat;
@@ -130,4 +181,7 @@ class Plat implements \JsonSerializable
             'description'=>$this->getDescription()
         ];
     }
+=======
+
+>>>>>>> origin/omarfitouri
 }

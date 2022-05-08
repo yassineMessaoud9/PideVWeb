@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+<<<<<<< HEAD
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -57,34 +58,92 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
      * @Assert\NotBlank(message="please enter your name")
      * @Groups("act")
      * @Groups("post:read")
+=======
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Utilisateur
+ *
+ * @ORM\Table(name="utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"}), @ORM\UniqueConstraint(name="email_2", columns={"email"})})
+ * @ORM\Entity
+ */
+class Utilisateur
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="idU", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
+>>>>>>> origin/omarfitouri
      */
     private $nom;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="please enter your prenom")
      * @Groups("act")
      * @Groups("post:read")
+=======
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=50, nullable=false)
+>>>>>>> origin/omarfitouri
      */
     private $prenom;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255)
      * @Groups("act")
      * @Groups("post:read")
      *
+=======
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=100, nullable=false)
+>>>>>>> origin/omarfitouri
      */
     private $adresse;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255)
      * @Groups("act")
      * @Groups("post:read")
      *
+=======
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="motpasse", type="string", length=250, nullable=false)
+     */
+    private $motpasse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=300, nullable=false)
+>>>>>>> origin/omarfitouri
      */
     private $photo;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="please enter pays")
      * @Groups("act")
@@ -178,6 +237,17 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+=======
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=30, nullable=false)
+     */
+    private $role;
+
+    public function getIdu(): ?int
+    {
+        return $this->idu;
+>>>>>>> origin/omarfitouri
     }
 
     public function getNom(): ?string
@@ -216,18 +286,51 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
         return $this;
     }
 
+<<<<<<< HEAD
     public function getPhoto()
+=======
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getMotpasse(): ?string
+    {
+        return $this->motpasse;
+    }
+
+    public function setMotpasse(string $motpasse): self
+    {
+        $this->motpasse = $motpasse;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+>>>>>>> origin/omarfitouri
     {
         return $this->photo;
     }
 
+<<<<<<< HEAD
     public function setPhoto($photo)
+=======
+    public function setPhoto(string $photo): self
+>>>>>>> origin/omarfitouri
     {
         $this->photo = $photo;
 
         return $this;
     }
 
+<<<<<<< HEAD
     public function getPays(): ?string
     {
         return $this->pays;
@@ -295,4 +398,22 @@ class Utilisateur implements UserInterface, \Serializable, \JsonSerializable
     {
         return $this->nom;
     }
+=======
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+    public function __toString() {
+        return $this->nom;
+    }
+
+
+>>>>>>> origin/omarfitouri
 }

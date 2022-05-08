@@ -1,0 +1,213 @@
+{# <h3 style="margin-left: 600px ;color: blue;">  TripToDo <h1  style="text-align:center; margin-top: 5px ;text-decoration: underline;">facture de reservation </h1></h3> 
+<h6> numero de vol : {{vol}} </h6>
+<p  style="margin-top:150px;"   > Bonjour monsieur Omar Fitouri, nous sommes ravie d'avoir choisie notre agence, </p>
+<p>votre date d'aller est le {{dateallervol}} a {{tempaller}}</p>
+<p> votre date de retour est le {{dateretourvol}} a {{tempretour}} </p>
+<p> vous passerez {{nbrjours}} jour a {{destination}} </p>
+<p> voici le prix de votre billet {{prixvol}} DT et voici la classe de votre billet {{classvol}} </p>
+</p> #}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>A simple, clean, and responsive HTML invoice template</title>
+    
+    <style>
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+    
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+    
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+    
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+    
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+    
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+    
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+    
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+    
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+    
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+    
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+    
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+    
+    .rtl table {
+        text-align: right;
+    }
+    
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="https://www.istockphoto.com/photo/sugar-cane-isolated-on-white-background-gm1298327874-391207368?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fsugarcane&utm_term=sugarcane%3A%3A%3A">
+                            </td>
+                            
+                            <td>
+                                TripToDo<br>
+                                26 Avril 2022<br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td style="text-decoration: underline;">
+                                Facture de reservation<br>
+                               <br>
+                                
+                            </td>
+                            
+                            <td>
+                                <br>
+                                fitouri omar <br>  numero de vol : {{vol}}
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Destination
+                </td>
+                
+                <td>
+                    nombre de jour du voyage 
+                </td>
+            </tr>
+            
+            <tr class="details">
+                <td>
+                    {{destination}}
+                </td>
+                
+                <td>
+                   {{nbrjours}}
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    date aller 
+                </td>
+                
+                <td>
+                    date retour
+                </td>
+            </tr>
+            
+            <tr class="item">
+                <td>
+                    {{dateallervol}}  {{tempaller}}
+                </td>
+                
+                <td>
+                    {{dateretourvol}}  {{tempretour}} 
+                </td>
+            </tr>
+            
+           
+            
+            <tr class="item last">
+                <td>
+                    class vol 
+                </td>
+                
+                <td>
+                    {{classvol}}
+                </td>
+            </tr>
+            
+            <tr class="total">
+                <td></td>
+                
+                <td>
+                   prix: {{prixvol}} DT
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+  
+
+		
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0"> avion  </h3>
+			   
+              
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    
+                    <th scope="col">numserieavion</th>
+                    <th scope="col">marque</th>
+                    <th scope="col">nombre de places</th>
+                    
+                    
+                  </tr>
+                </thead>
+                <tbody>
+				  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                       
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{ avion.numserieavion }}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                    {{ avion.marque }}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                       {{ avion.nbrplace }}
+                      </span>
+                    </td>
+                
+                 
+                
+                  </tr>
+                   
+                  
+                 
+
+                 
+                   
+                  
+                </tbody>
+              </table>
+            </div>
+         
+</div>
+
+    {{ include('avion/_delete_form.html.twig') }}
+ <a href="{{ path('app_avion_index') }}" class="btn btn-outline-primary btn-lg btn-block " style="margin-top:1% " role="button" aria-pressed="true">back to list</a>
+{% endblock %}

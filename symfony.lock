@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "botman/botman": {
         "version": "2.6.1"
     },
@@ -20,6 +21,8 @@
     "container-interop/container-interop": {
         "version": "1.2.0"
     },
+=======
+>>>>>>> origin/omarfitouri
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -42,7 +45,11 @@
         "version": "3.2.2"
     },
     "doctrine/dbal": {
+<<<<<<< HEAD
         "version": "3.3.5"
+=======
+        "version": "3.3.4"
+>>>>>>> origin/omarfitouri
     },
     "doctrine/deprecations": {
         "version": "v0.5.3"
@@ -100,6 +107,7 @@
     "doctrine/sql-formatter": {
         "version": "1.1.2"
     },
+<<<<<<< HEAD
     "egulias/email-validator": {
         "version": "3.1.2"
     },
@@ -117,10 +125,27 @@
     },
     "guzzlehttp/psr7": {
         "version": "1.8.5"
+=======
+    "dompdf/dompdf": {
+        "version": "v1.2.1"
+    },
+    "egulias/email-validator": {
+        "version": "3.1.2"
+    },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.7"
+    },
+    "knplabs/knp-components": {
+        "version": "v3.4.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.8.0"
+>>>>>>> origin/omarfitouri
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
+<<<<<<< HEAD
     "minicodemonkey/amazon-alexa-php": {
         "version": "0.1.5"
     },
@@ -141,10 +166,24 @@
     },
     "psr/cache": {
         "version": "1.0.1"
+=======
+    "nikic/php-parser": {
+        "version": "v4.13.2"
+    },
+    "phenx/php-font-lib": {
+        "version": "0.5.4"
+    },
+    "phenx/php-svg-lib": {
+        "version": "0.4.1"
+    },
+    "psr/cache": {
+        "version": "2.0.0"
+>>>>>>> origin/omarfitouri
     },
     "psr/container": {
         "version": "1.1.2"
     },
+<<<<<<< HEAD
     "psr/http-message": {
         "version": "1.0.1"
     },
@@ -174,6 +213,13 @@
     },
     "react/stream": {
         "version": "v1.2.0"
+=======
+    "psr/log": {
+        "version": "2.0.0"
+    },
+    "sabberworm/php-css-parser": {
+        "version": "8.4.0"
+>>>>>>> origin/omarfitouri
     },
     "sensio/framework-extra-bundle": {
         "version": "6.2",
@@ -187,9 +233,12 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+<<<<<<< HEAD
     "spatie/macroable": {
         "version": "1.0.1"
     },
+=======
+>>>>>>> origin/omarfitouri
     "swiftmailer/swiftmailer": {
         "version": "v6.3.0"
     },
@@ -200,7 +249,11 @@
         "version": "v4.4.40"
     },
     "symfony/cache-contracts": {
+<<<<<<< HEAD
         "version": "v2.5.1"
+=======
+        "version": "v2.5.0"
+>>>>>>> origin/omarfitouri
     },
     "symfony/config": {
         "version": "v4.4.37"
@@ -225,7 +278,11 @@
         "version": "v4.4.40"
     },
     "symfony/deprecation-contracts": {
+<<<<<<< HEAD
         "version": "v2.5.1"
+=======
+        "version": "v2.5.0"
+>>>>>>> origin/omarfitouri
     },
     "symfony/doctrine-bridge": {
         "version": "v4.4.39"
@@ -240,7 +297,11 @@
         "version": "v4.4.37"
     },
     "symfony/event-dispatcher-contracts": {
+<<<<<<< HEAD
         "version": "v1.1.12"
+=======
+        "version": "v1.1.11"
+>>>>>>> origin/omarfitouri
     },
     "symfony/filesystem": {
         "version": "v4.4.39"
@@ -284,6 +345,7 @@
             "./src/Kernel.php"
         ]
     },
+<<<<<<< HEAD
     "symfony/google-mailer": {
         "version": "4.4",
         "recipe": {
@@ -295,6 +357,10 @@
     },
     "symfony/http-client-contracts": {
         "version": "v2.5.1"
+=======
+    "symfony/http-client-contracts": {
+        "version": "v2.5.0"
+>>>>>>> origin/omarfitouri
     },
     "symfony/http-foundation": {
         "version": "v4.4.39"
@@ -308,6 +374,7 @@
     "symfony/intl": {
         "version": "v4.4.38"
     },
+<<<<<<< HEAD
     "symfony/mailer": {
         "version": "4.4",
         "recipe": {
@@ -320,6 +387,8 @@
             "./config/packages/mailer.yaml"
         ]
     },
+=======
+>>>>>>> origin/omarfitouri
     "symfony/maker-bundle": {
         "version": "1.38",
         "recipe": {
@@ -382,6 +451,7 @@
             "./config/routes.yaml"
         ]
     },
+<<<<<<< HEAD
     "symfony/security-bundle": {
         "version": "4.4",
         "recipe": {
@@ -394,12 +464,15 @@
             "./config/packages/security.yaml"
         ]
     },
+=======
+>>>>>>> origin/omarfitouri
     "symfony/security-core": {
         "version": "v4.4.38"
     },
     "symfony/security-csrf": {
         "version": "v4.4.37"
     },
+<<<<<<< HEAD
     "symfony/security-guard": {
         "version": "v4.4.37"
     },
@@ -411,6 +484,10 @@
     },
     "symfony/service-contracts": {
         "version": "v2.5.1"
+=======
+    "symfony/service-contracts": {
+        "version": "v2.5.0"
+>>>>>>> origin/omarfitouri
     },
     "symfony/stopwatch": {
         "version": "v4.4.38"
@@ -429,8 +506,26 @@
             "./config/packages/test/swiftmailer.yaml"
         ]
     },
+<<<<<<< HEAD
     "symfony/translation-contracts": {
         "version": "v2.5.1"
+=======
+    "symfony/translation": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "2ad9d2545bce8ca1a863e50e92141f0b9d87ffcd"
+        },
+        "files": [
+            "./config/packages/translation.yaml",
+            "./translations/.gitignore"
+        ]
+    },
+    "symfony/translation-contracts": {
+        "version": "v2.5.0"
+>>>>>>> origin/omarfitouri
     },
     "symfony/twig-bridge": {
         "version": "v4.4.40"
@@ -480,6 +575,7 @@
     "symfony/yaml": {
         "version": "v4.4.37"
     },
+<<<<<<< HEAD
     "symfonycasts/reset-password-bundle": {
         "version": "1.13",
         "recipe": {
@@ -498,10 +594,13 @@
     "tightenco/collect": {
         "version": "v8.83.6"
     },
+=======
+>>>>>>> origin/omarfitouri
     "twig/extra-bundle": {
         "version": "v3.3.8"
     },
     "twig/twig": {
+<<<<<<< HEAD
         "version": "v3.3.10"
     },
     "zendframework/zend-escaper": {
@@ -527,5 +626,8 @@
     },
     "zendframework/zend-validator": {
         "version": "2.13.0"
+=======
+        "version": "v3.3.9"
+>>>>>>> origin/omarfitouri
     }
 }

@@ -1,0 +1,30 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}New Vol{% endblock %}
+
+{% block body %}
+<div class="row  col-lg-7 col-md-8 center shadow rounded" style="background-color:#ffffffff; margin-top: 1%">
+        <div class="col">
+
+    <h1 style="margin-top: 5%">Create new Vol</h1>
+    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }} 
+
+    {{ include('vol/_form.html.twig') }} 
+     {{ form_widget(form.destination ,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.destination,{'attr':{'class':'text-danger'}}) }}
+    {{ form_widget(form.prixvol ,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.prixvol,{'attr':{'class':'text-danger'}}) }}
+    {{ form_widget(form.typevol ,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.typevol,{'attr':{'class':'text-danger'}}) }}
+        {{ form_widget(form.dateallervol,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.dateallervol,{'attr':{'class':'text-danger'}}) }}
+      {{ form_widget(form.dateretourvol,{'attr':{'class':'form-control'}}) }}
+    {{ form_errors(form.dateretourvol,{'attr':{'class':'text-danger'}}) }}
+    {{ form_end(form) }} 
+
+    <a  class="btn btn-secondary btn-lg btn-block " style="margin:1% " role="button" aria-pressed="true" href="{{ path('app_vol_index') }}">back to list</a>
+    </div></div>
+{% endblock %}
+{% block js %}
+	<script src="/assets-old/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+{% endblock %}

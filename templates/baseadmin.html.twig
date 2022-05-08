@@ -7,9 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
+<<<<<<< HEAD
         {% block stylesheets %}
 
 
+=======
+
+        {% block stylesheets %}
+   
+
+   
+>>>>>>> origin/omarfitouri
 		  <!-- Favicon -->
   <link href= "{{asset('backoffice/dashboard/img/brand/favicon.png')}}" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -20,12 +28,42 @@
   <!-- CSS Files -->
   <link href="{{asset('backoffice/dashboard/css/argon-dashboard.css?v=1.1.2')}}" rel="stylesheet" />
 
+<<<<<<< HEAD
 
         {% endblock %}
 
 
 
 
+=======
+   
+
+        {% endblock %}
+
+        {% block javascripts %}
+  
+<script src="{{asset('backoffice/dashboard/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
+  <script src=" {{asset('backoffice/dashboard/js/plugins/jquery/dist/jquery.min.js')}}"></script>
+  <script src=" {{asset('backoffice/dashboard/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <!--   Optional JS   -->
+  <script src="{{asset('backoffice/dashboard/js/plugins/chart.js/dist/Chart.min.js')}}"></script>
+  <script src=" {{asset('backoffice/dashboard/js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
+  <!--   Argon JS   -->
+  <script src="{{asset('backoffice/dashboard/js/argon-dashboard.min.js?v=1.1.2')}}"></script>
+  <script src=" https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "argon-dashboard-free"
+      });
+  </script>
+
+
+
+  {% endblock %}
+>>>>>>> origin/omarfitouri
 </head>
 <body class="">
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -55,7 +93,12 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
+<<<<<<< HEAD
                 <img alt="Image placeholder" src="backoffice/dashboard/img/theme/team-1-800x800.jpg">
+=======
+                <img alt="Image placeholder" src="backoffice/dashboard/img/theme/team-1-800x800.jpg
+">
+>>>>>>> origin/omarfitouri
               </span>
             </div>
           </a>
@@ -119,6 +162,7 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  active ">
+<<<<<<< HEAD
             <a class="nav-link " href="{{path('app_utilisateur_index')}}">
               <i class="ni ni-tv-2 text-primary"></i> Liste Utilisateur
             </a>
@@ -148,6 +192,47 @@
             </a>
           </li>
         </ul>
+=======
+            <a class="nav-link " href="../index.html">
+              <i class="fa fa-bars text-primary"></i> Menu
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{path('app_avion_index')}}">
+              <i class="fa fa-plane text-blue"></i>
+			   avion
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{path('app_adresse_index')}}">
+              <i class="ni ni-pin-3 text-blue"></i> Adresse
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{path('app_compagnieaerienne_index')}}">
+              <i class="fa fa-building text-blue"></i> compagnieaerienne
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link   " href="{{path('app_vol_index')}}">
+              <i class="fa fa-globe text-blue"></i> vol
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{path('app_reservationvol_index')}}">
+              <i class="fa fa-plane text-blue"></i>
+			   reservationvol
+            </a>
+          </li>
+          
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+       
+        <!-- Navigation -->
+       
+>>>>>>> origin/omarfitouri
     
       </div>
     </div>
@@ -169,16 +254,27 @@
             </div>
           </div>
         </form>
+<<<<<<< HEAD
         <!-- User -->{% if app.user %}
+=======
+        <!-- User -->
+>>>>>>> origin/omarfitouri
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
+<<<<<<< HEAD
                   <img alt="Image placeholder" src="{{asset('/uploads/' ~ app.user.photo )}}">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold">{{app.user.nom}}</span>
+=======
+                  <img alt="Image placeholder" src="backoffice/dashboard/img/theme/team-4-800x800.jpg">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+>>>>>>> origin/omarfitouri
                 </div>
               </div>
             </a>
@@ -203,6 +299,7 @@
                 <span>Support</span>
               </a>
               <div class="dropdown-divider"></div>
+<<<<<<< HEAD
                              
    <a href="{{ path('app_logout') }}" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
@@ -212,6 +309,12 @@
                
               </a>    {% endif %}
 
+=======
+              <a href="#!" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
+>>>>>>> origin/omarfitouri
             </div>
           </li>
         </ul>
@@ -231,13 +334,20 @@
       <!-- Table -->
   <div class="row">
         <div class="col">
+<<<<<<< HEAD
              <div class="card shadow">
             <div class="card-body">
 		 {% block body %}
+=======
+		 {% block body %}
+     
+     
+>>>>>>> origin/omarfitouri
         {% endblock %}
        
       </div> 
     </div>
+<<<<<<< HEAD
      </div> 
     </div>
      
@@ -250,6 +360,18 @@
   <!--   Optional JS   -->
   <!--   Argon JS   -->
   <script src="{{asset('backoffice/dashboard/js/argon-dashboard.min.js?v=1.1.2')}}"></script>
+=======
+     
+      
+   
+ 
+  <!--   Core   -->
+  <script src="backoffice/dashboard/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="backoffice/dashboard/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!--   Optional JS   -->
+  <!--   Argon JS   -->
+  <script src="backoffice/dashboard/js/argon-dashboard.min.js?v=1.1.2"></script>
+>>>>>>> origin/omarfitouri
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     window.TrackJS &&
@@ -258,8 +380,14 @@
         application: "argon-dashboard-free"
       });
   </script>
+<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
       <footer class="footer">
+=======
+
+
+      {# <footer class="footer">
+>>>>>>> origin/omarfitouri
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
@@ -283,6 +411,10 @@
             </ul>
           </div>
         </div>
+<<<<<<< HEAD
       </footer>
+=======
+      </footer> #}
+>>>>>>> origin/omarfitouri
        </div>
 </body>

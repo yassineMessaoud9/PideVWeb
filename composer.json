@@ -5,6 +5,7 @@
         "php": ">=7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+<<<<<<< HEAD
         "botman/botman": "^2.6",
         "botman/driver-amazon-alexa": "^1.3",
         "botman/driver-facebook": "^1.11",
@@ -14,6 +15,14 @@
         "doctrine/doctrine-bundle": "^2.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
+=======
+        "doctrine/annotations": "^1.13",
+        "doctrine/doctrine-bundle": "^2.6",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.11",
+        "dompdf/dompdf": "^1.2",
+        "knplabs/knp-paginator-bundle": "^5.8",
+>>>>>>> origin/omarfitouri
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",
@@ -21,19 +30,34 @@
         "symfony/flex": "^1.3.1",
         "symfony/form": "4.4.*",
         "symfony/framework-bundle": "4.4.*",
+<<<<<<< HEAD
         "symfony/google-mailer": "4.4.*",
         "symfony/mailer": "4.4.*",
         "symfony/proxy-manager-bridge": "4.4.*",
         "symfony/security-bundle": "4.4.*",
         "symfony/serializer": "4.4.*",
+=======
+        "symfony/proxy-manager-bridge": "4.4.*",
+        "symfony/security-csrf": "4.4.*",
+>>>>>>> origin/omarfitouri
         "symfony/swiftmailer-bundle": "^3.5",
         "symfony/twig-bundle": "4.4.*",
         "symfony/validator": "4.4.*",
         "symfony/yaml": "4.4.*",
+<<<<<<< HEAD
         "symfonycasts/reset-password-bundle": "^1.13",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
+=======
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.38",
+        "symfony/web-server-bundle": "4.4.*"
+    },
+>>>>>>> origin/omarfitouri
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
@@ -82,9 +106,12 @@
             "allow-contrib": false,
             "require": "4.4.*"
         }
+<<<<<<< HEAD
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.38",
         "symfony/web-server-bundle": "4.4.x-dev"
+=======
+>>>>>>> origin/omarfitouri
     }
 }

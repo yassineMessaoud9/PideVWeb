@@ -1,0 +1,165 @@
+   {% block javascripts %}
+
+
+  <script src=" {{asset('backoffice/dashboard/js/plugins/jquery/dist/jquery.min.js')}}"></script>
+  <script src=" {{asset('backoffice/dashboard/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <!--   Optional JS   -->
+  <script src="{{asset('backoffice/dashboard/js/plugins/chart.js/dist/Chart.min.js')}}"></script>
+  <script src=" {{asset('backoffice/dashboard/js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
+  <!--   Argon JS   -->
+  <script src="{{asset('backoffice/dashboard/js/argon-dashboard.min.js?v=1.1.2')}}"></script>
+  <script src=" https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "argon-dashboard-free"
+      });
+  </script>
+
+{% endblock %}
+{% block title %}{% endblock %}
+{% block stylesheets %}
+<link href="{{asset('frontoffice/css/reservation.css')}}" rel="stylesheet" />
+		  <!-- Favicon -->
+  <link href= "{{asset('backoffice/dashboard/img/brand/favicon.png')}}" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{{asset('backoffice/dashboard/js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
+  <link href="{{asset('backoffice/dashboard/js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{{asset('backoffice/dashboard/css/argon-dashboard.css?v=1.1.2')}}" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-default">
+    <div class="container">
+        <a class="navbar-brand" href="#">reserver vol</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{{path('app_mail')}}">Plus d'information</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-default">
+            <div class="navbar-collapse-header">
+                <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a href="javascript:void(0)">
+                            <img src="../../assets-old/img/brand/blue.png">
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="navbar-nav ml-lg-auto">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#">
+                        <i class="ni ni-favourite-28"></i>
+                        <span class="nav-link-inner--text d-lg-none">Discover</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#">
+                        <i class="ni ni-notification-70"></i>
+                        <span class="nav-link-inner--text d-lg-none">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="ni ni-settings-gear-65"></i>
+                        <span class="nav-link-inner--text d-lg-none">Settings</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+ {% for vol in vols %}
+<div class="section">
+<div class="tpd-plan">
+<div class="tp-flight-plan">
+<div class="container-fluid">
+             <div class="crop depart">
+                        <div class="context collapsed" data-toggle="collapse" data-target="#demo2">
+                    <a role="button" tabindex="0" class="tog-cal itin-det-btn">
+                          <i class="fa fa-chevron-up"></i>
+               <i class="fa fa-chevron-down"></i>
+                       </a>
+                 <div class="item it-1">
+                  <label class="trip-type depart">TripToDo</label>
+                        <div class="route-dot">
+                    <span class="point" style="--data-left:35%"></span>
+          <span class="point" style="--data-left:65%"></span>
+                        </div>
+        <div class="airline-image">
+          <div class="df-text">{{ vol.prixvol }} DT</div>
+<span class="img-wrapper">
+        <svg class="anime-airplane">
+        <use xlink:href="#airplane"></use>
+       </svg>
+           <span class="top-label has-stops">{{vol.classvol}} <span class="stops"></span></span>
+             </span>
+               </div>
+
+               <div class="port-seg">
+               <div class="flight-seg origin">
+                 <form method= "POST">
+              <div class="time">{{ vol.tempallervol  }}</div>
+            <div class="port" name="dateallervol" value=" {{vol.dateallervol  ? vol.dateallervol|date('Y-m-d') : ''}}"> {{vol.dateallervol  ? vol.dateallervol|date('Y-m-d') : ''}}</div>
+          <div class="name">{{ vol.destination }}</div>
+            </div>
+             <div class="flight-seg destination">
+             <div class="time">{{ vol.tempretourvol  }}</div>
+            <div class="port" name="dateretourvol">{{vol.dateretourvol  ? vol.dateretourvol|date('Y-m-d') : ''}} </div>
+    </div></form>
+                 </div>
+</div>
+      <div class="item it-2">
+                          <div class="dr-row">
+       <span  class="al-name">
+        <a class="btn btn-danger" style="background-color:#0F4E7B !important" href="{{ path('app_reservationvol2_new',{'numvol': vol.numvol}) }}"> reserver </a>
+       
+       
+      </span>
+     <img class="airline-logo" />
+     </div>
+       <div class="take-tim"></div>
+     </div>
+    </div>
+    </div>
+   </div>
+
+  </div>
+</div>
+
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
+  <symbol  id="airplane" viewBox="243.5 245.183 25 21.633">
+    <g>
+      <path d="M251.966,266.816h1.242l6.11-8.784l5.711,0.2c2.995-0.102,3.472-2.027,3.472-2.308
+                              c0-0.281-0.63-2.184-3.472-2.157l-5.711,0.2l-6.11-8.785h-1.242l1.67,8.983l-6.535,0.229l-2.281-3.28h-0.561v3.566
+                              c-0.437,0.257-0.738,0.724-0.757,1.266c-0.02,0.583,0.288,1.101,0.757,1.376v3.563h0.561l2.281-3.279l6.535,0.229L251.966,266.816z
+                              "/>
+    </g>
+  </symbol>
+</svg>
+</div>
+{% endfor %}
+
+{% endblock %}
+
